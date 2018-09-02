@@ -16,6 +16,10 @@ To run the samples and add the SDK use the instructions provided [here](https://
 
 To setup speech recognition use the instructions provided [here](https://github.com/bold360ai/bold360ai_ios_sdk/wiki/SpeechRecognition)
 
+## Setup Handover
+
+To setup handover use the instructions provided [here](https://github.com/bold360ai/bold360ai_ios_sdk/wiki/Handover)
+
 ## Support Offline Mode (History)
 
 To setup History Service use the instructions provided [here](https://github.com/bold360ai/bold360ai_ios_sdk/wiki/Conversation-History-Service)
