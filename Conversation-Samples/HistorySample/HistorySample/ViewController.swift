@@ -162,8 +162,11 @@ extension ViewController:  UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension ViewController: ChatHandler {
     func startChat(_ chatInfo: [AnyHashable : Any]!) {
-        self.navigationController?.viewControllers.last?.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(ViewController.stopLiveChat(sender:))), animated: true)
-        self.navigationController?.viewControllers.last?.title = "You're talking with Nisso"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.navigationController?.viewControllers.last?.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(ViewController.stopLiveChat(sender:))), animated: true)
+            self.navigationController?.viewControllers.last?.title = "You're talking with Nisso"
+        }) 
+        
     }
     
     func endChat() {
