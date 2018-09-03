@@ -22,7 +22,7 @@ class AccountParamsHelper {
         static let Server = "server"
     }
     
-    static func getLocalParams() -> [String: String] {
+    static func getLocalParams() -> [String : [String]] {
         if let paramsPath  = getAcountParamsPath("MyAccountParams") {
             accountParamsPath = paramsPath
         } else {
@@ -40,12 +40,12 @@ class AccountParamsHelper {
         return Bundle.main.path(forResource: fileName, ofType: "plist")
     }
     
-    private static func contentsOfFileDict() -> [String : String] {
-        return NSDictionary(contentsOfFile: accountParamsPath!)! as! [String : String]
+    private static func contentsOfFileDict() -> [String : [String]] {
+        return NSDictionary(contentsOfFile: accountParamsPath!)! as! [String : [String]]
     }
     
     private static func checkAccountParamsExist() -> Bool {
-        if contentsOfFileDict()[accountParamsKeys.Account] != "" {
+        if (contentsOfFileDict()[accountParamsKeys.Account]?.count)! > 0 {
             return true
         }
         

@@ -22,12 +22,14 @@ class ViewController: UIViewController {
     var chatHandlerProvider: ChatHandlerProvider!
     var historyElements = [String: Array<StorableChatElement>]()
     let historyStatementsDB = DBManager.sharedInstance
+    let localAccountParams = AccountParamsHelper.getLocalParams()
     
     private var accountParams: AccountParams?
     var chatController: NRChatController!
     // Every bot controller that is created should own Reachability instance
     let reachability = Reachability()
     
+    @IBOutlet weak var accountPickerView: UIPickerView!
     /************************************************************/
     // MARK: - Functions
     /************************************************************/
@@ -35,6 +37,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addReachabilityObserver()
+        self.accountPickerView.delegate = self
+        self.accountPickerView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,12 +48,13 @@ class ViewController: UIViewController {
     
     func setupAccountParams() -> AccountParams {
         let params = AccountParams()
-        let localAccountParams = AccountParamsHelper.getLocalParams()
-        params.account = localAccountParams[AccountParamsHelper.accountParamsKeys.Account]
-        params.knowledgeBase = localAccountParams[AccountParamsHelper.accountParamsKeys.KnowledgeBase]
-        params.apiKey = localAccountParams[AccountParamsHelper.accountParamsKeys.ApiKey]
-        params.nanorepContext = ["UserRole": AccountParamsHelper.accountParamsKeys.NanorepContext]
-        params.perform(Selector.init(("setServer:")), with: localAccountParams[AccountParamsHelper.accountParamsKeys.Server])
+        let index = accountPickerView.selectedRow(inComponent: 0)
+        
+        params.account = localAccountParams[AccountParamsHelper.accountParamsKeys.Account]?[index]
+        params.knowledgeBase = localAccountParams[AccountParamsHelper.accountParamsKeys.KnowledgeBase]?[index]
+        params.apiKey = localAccountParams[AccountParamsHelper.accountParamsKeys.ApiKey]?[index]
+        params.nanorepContext = ["UserRole": localAccountParams[AccountParamsHelper.accountParamsKeys.NanorepContext]?[index]] as! [String : String]
+        params.perform(Selector.init(("setServer:")), with: localAccountParams[AccountParamsHelper.accountParamsKeys.Server]?[index])
         
         return params
     }
@@ -66,12 +71,12 @@ class ViewController: UIViewController {
     /************************************************************/
     
     @IBAction func loadNanorep(_ sender: UIButton) {
+        let index = accountPickerView.selectedRow(inComponent: 0)
         let config: NRBotConfiguration = NRBotConfiguration()
         self.accountParams = self.setupAccountParams()
         self.chatController = NRChatController(account: self.accountParams)
-        config.chatContentURL = URL.init(string:AccountParamsHelper.getLocalParams()[AccountParamsHelper.accountParamsKeys.ChatContentURL]!)
+        config.chatContentURL = URL.init(string:(AccountParamsHelper.getLocalParams()[AccountParamsHelper.accountParamsKeys.ChatContentURL]?[index])!)
         config.withNavBar = true
-        // TODO: under config pass id
         self.chatController.delegate = self
         self.chatController.handOver = self
         self.chatController.uiConfiguration = config
@@ -129,6 +134,25 @@ extension ViewController {
     
     private func removeReachabilityObserver() -> Void {
         self.reachability?.stopNotifier()
+    }
+}
+
+/************************************************************/
+// MARK: - UIPickerViewDelegate & UIPickerViewDataSource
+/************************************************************/
+
+extension ViewController:  UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        let localAccountParams = AccountParamsHelper.getLocalParams()
+        return (localAccountParams[AccountParamsHelper.accountParamsKeys.Account]?.count)!
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return localAccountParams[AccountParamsHelper.accountParamsKeys.Account]?[row]
     }
 }
 
