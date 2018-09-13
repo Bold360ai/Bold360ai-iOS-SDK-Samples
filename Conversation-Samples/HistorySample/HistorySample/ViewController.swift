@@ -13,7 +13,7 @@ import RealmSwift
 /************************************************************/
 
 // The Time Between Welcome Message Presantation
-let welcomeMsgTimeIteration = 10.0
+let welcomeMsgTimeIteration = 30.0
 
 class ViewController: UIViewController {
     /************************************************************/
@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     let reachability = Reachability()
     
     @IBOutlet weak var accountPickerView: UIPickerView!
+    @IBOutlet weak var welcomeMsgSwitch: UISwitch!
+    
     /************************************************************/
     // MARK: - Functions
     /************************************************************/
@@ -95,6 +97,11 @@ class ViewController: UIViewController {
     
     @IBAction func deleteHistory(_ sender: Any) {
         self.historyStatementsDB.deleteAllDatabase()
+    }
+    
+    
+    @IBAction func welcomeMsgStateChanged(_ sender: Any) {
+        
     }
 }
 
@@ -249,6 +256,10 @@ extension ViewController: NRChatControllerDelegate {
     }
     
     private func handleWelcomeMsgPresentation() -> Bool {
+        if self.welcomeMsgSwitch.isOn {
+            return false
+        }
+        
         let welcomeMsgTime = UserDefaults.standard.object(forKey: "WelcomeMsgTime") as? TimeInterval
         var timeDiff = 0.0;
         

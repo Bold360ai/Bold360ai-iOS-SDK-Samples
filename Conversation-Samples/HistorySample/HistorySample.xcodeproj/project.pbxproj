@@ -204,9 +204,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/NRAccessibility/NRAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/NanorepEngine/NanorepEngine.framework",
-				"${BUILT_PRODUCTS_DIR}/NanorepUI/NanorepUI.framework",
+				"${PODS_ROOT}/NRAccessibility/NRAccessibility.framework",
+				"${PODS_ROOT}/NanorepEngine/NanorepEngine.framework",
+				"${PODS_ROOT}/NanorepUI/NanorepUI.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);

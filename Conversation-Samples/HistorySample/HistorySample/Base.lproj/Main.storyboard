@@ -41,26 +41,44 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable Welcome Msg:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cte-Dw-AJQ">
+                                <rect key="frame" x="110" y="469" width="174" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HyF-59-Bvm">
+                                <rect key="frame" x="164" y="513" width="51" height="31"/>
+                                <connections>
+                                    <action selector="welcomeMsgStateChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ArL-gB-82I"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="HyF-59-Bvm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="164" id="36x-RI-aSg"/>
                             <constraint firstItem="o1O-6w-LdR" firstAttribute="centerX" secondItem="QTR-A3-ASA" secondAttribute="centerX" id="3Rc-6b-dxB"/>
                             <constraint firstItem="4bP-aV-xPv" firstAttribute="top" secondItem="QTR-A3-ASA" secondAttribute="bottom" constant="29.5" id="4eS-AX-5Qp"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4bP-aV-xPv" secondAttribute="trailing" constant="20" symbolic="YES" id="8HL-uO-dPT"/>
                             <constraint firstItem="o1O-6w-LdR" firstAttribute="top" secondItem="PAF-Sw-QXk" secondAttribute="bottom" constant="22" id="C1D-PM-bwn"/>
+                            <constraint firstItem="HyF-59-Bvm" firstAttribute="top" secondItem="cte-Dw-AJQ" secondAttribute="bottom" constant="23" id="GqX-UE-OJt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4bP-aV-xPv" secondAttribute="bottom" constant="227" id="aGN-5Y-PES"/>
                             <constraint firstItem="o1O-6w-LdR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="106" id="eRO-JH-xxQ"/>
                             <constraint firstItem="PAF-Sw-QXk" firstAttribute="centerX" secondItem="o1O-6w-LdR" secondAttribute="centerX" id="eyF-yG-1YB"/>
                             <constraint firstItem="QTR-A3-ASA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gZd-TZ-b1m"/>
+                            <constraint firstItem="cte-Dw-AJQ" firstAttribute="trailing" secondItem="PAF-Sw-QXk" secondAttribute="trailing" id="hmu-gN-a3w"/>
                             <constraint firstItem="QTR-A3-ASA" firstAttribute="top" secondItem="o1O-6w-LdR" secondAttribute="bottom" constant="78" id="lij-f0-ayO"/>
                             <constraint firstItem="QTR-A3-ASA" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="nkO-Tq-61j"/>
                             <constraint firstItem="o1O-6w-LdR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ucq-Wv-r5V"/>
                             <constraint firstItem="4bP-aV-xPv" firstAttribute="leading" secondItem="QTR-A3-ASA" secondAttribute="leading" id="w2O-iG-j2l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HyF-59-Bvm" secondAttribute="bottom" constant="123" id="xqM-8A-j5K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="MvW-xP-x3w"/>
                     <connections>
                         <outlet property="accountPickerView" destination="o1O-6w-LdR" id="eEL-Mp-Kow"/>
+                        <outlet property="welcomeMsgSwitch" destination="HyF-59-Bvm" id="1mx-iF-IJi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
