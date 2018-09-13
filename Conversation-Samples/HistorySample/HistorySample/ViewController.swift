@@ -12,6 +12,9 @@ import RealmSwift
 // MARK: - ViewController
 /************************************************************/
 
+// The Time Between Welcome Message Presantation
+let welcomeMsgTimeIteration = 10.0
+
 class ViewController: UIViewController {
     /************************************************************/
     // MARK: - Properties
@@ -23,6 +26,7 @@ class ViewController: UIViewController {
     var historyElements = [String: Array<StorableChatElement>]()
     let historyStatementsDB = DBManager.sharedInstance
     let localAccountParams = AccountParamsHelper.getLocalParams()
+    let userDefaults = UserDefaults.standard
     
     private var accountParams: AccountParams?
     var chatController: NRChatController!
@@ -178,11 +182,13 @@ extension ViewController: ChatHandler {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.delegate.update(StatementStatus.OK, element: statement)
         }
-        let remote = RemoteChatElement(type: .RemoteElement, content: "Hello from Live Agent")
+        let remote = RemoteChatElement(type: .RemoteElement, content: "Hello from Live Agent: \(String(describing: statement?.text))")
         remote?.design = ChatElementDesignCustomIncoming
         remote?.agentType = .Live
         
-        (self.delegate as! NSObject).perform(#selector(ChatHandlerDelegate.presentStatement(_:)), with: remote, afterDelay: 4)
+        // Random delay value for tests
+        let random = Double(arc4random_uniform(9) + 1)
+        (self.delegate as! NSObject).perform(#selector(ChatHandlerDelegate.presentStatement(_:)), with: remote, afterDelay: random)
     }
     
     func handleClickedLink(_ link: URL!) {
@@ -236,6 +242,28 @@ extension ViewController: NRChatControllerDelegate {
     
     func presenting(_ controller: UIViewController!, shouldHandleClickedLink link: String!) -> Bool {
         return true
+    }
+    
+    func shouldPresentWelcomeMessage() -> Bool {
+        return self.handleWelcomeMsgPresentation()
+    }
+    
+    private func handleWelcomeMsgPresentation() -> Bool {
+        let welcomeMsgTime = UserDefaults.standard.object(forKey: "WelcomeMsgTime") as? TimeInterval
+        var timeDiff = 0.0;
+        
+        if let msgTime = welcomeMsgTime {
+            timeDiff = NSDate().timeIntervalSince1970 - msgTime
+        }
+        
+        if welcomeMsgTime == nil || timeDiff > welcomeMsgTimeIteration {
+            // save current time to user defaults
+            self.userDefaults.set(NSDate().timeIntervalSince1970, forKey: "WelcomeMsgTime")
+            
+            return true
+        }
+        
+        return false
     }
 }
 
