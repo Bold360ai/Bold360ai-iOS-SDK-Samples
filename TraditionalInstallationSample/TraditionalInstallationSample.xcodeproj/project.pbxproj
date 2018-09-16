@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF9F5023214E4CEF00BFD23E /* AccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF9F5020214E4CEF00BFD23E /* AccountParams.plist */; };
+		AF9F5024214E4CEF00BFD23E /* MyAccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF9F5021214E4CEF00BFD23E /* MyAccountParams.plist */; };
+		AF9F5025214E4CEF00BFD23E /* AccountParamsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F5022214E4CEF00BFD23E /* AccountParamsHelper.swift */; };
 		AFCA99E720BD6E0500824E5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCA99E620BD6E0500824E5D /* AppDelegate.swift */; };
 		AFCA99E920BD6E0500824E5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCA99E820BD6E0500824E5D /* ViewController.swift */; };
 		AFCA99EC20BD6E0500824E5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFCA99EA20BD6E0500824E5D /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF9F5020214E4CEF00BFD23E /* AccountParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AccountParams.plist; sourceTree = "<group>"; };
+		AF9F5021214E4CEF00BFD23E /* MyAccountParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAccountParams.plist; sourceTree = "<group>"; };
+		AF9F5022214E4CEF00BFD23E /* AccountParamsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountParamsHelper.swift; sourceTree = "<group>"; };
 		AFCA99E320BD6E0500824E5D /* TraditionalInstallationSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraditionalInstallationSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCA99E620BD6E0500824E5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFCA99E820BD6E0500824E5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,9 +69,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF9F501F214E4CEF00BFD23E /* LocalAccountParams */ = {
+			isa = PBXGroup;
+			children = (
+				AF9F5020214E4CEF00BFD23E /* AccountParams.plist */,
+				AF9F5021214E4CEF00BFD23E /* MyAccountParams.plist */,
+				AF9F5022214E4CEF00BFD23E /* AccountParamsHelper.swift */,
+			);
+			name = LocalAccountParams;
+			path = "../Conversation-Samples/HistorySample/HistorySample/LocalAccountParams";
+			sourceTree = "<group>";
+		};
 		AFCA99DA20BD6E0500824E5D = {
 			isa = PBXGroup;
 			children = (
+				AF9F501F214E4CEF00BFD23E /* LocalAccountParams */,
 				AFD0AFCC20E8FE0200BAC079 /* NanorepEngine.framework */,
 				AFD0AFCD20E8FE0200BAC079 /* NanorepUI.framework */,
 				AFD0AFCB20E8FE0100BAC079 /* NRAccessibility.framework */,
@@ -155,8 +173,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9F5024214E4CEF00BFD23E /* MyAccountParams.plist in Resources */,
 				AFCA99F120BD6E0500824E5D /* LaunchScreen.storyboard in Resources */,
 				AFCA99EE20BD6E0500824E5D /* Assets.xcassets in Resources */,
+				AF9F5023214E4CEF00BFD23E /* AccountParams.plist in Resources */,
 				AFCA99EC20BD6E0500824E5D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9F5025214E4CEF00BFD23E /* AccountParamsHelper.swift in Sources */,
 				AFCA99E920BD6E0500824E5D /* ViewController.swift in Sources */,
 				AFCA99E720BD6E0500824E5D /* AppDelegate.swift in Sources */,
 			);

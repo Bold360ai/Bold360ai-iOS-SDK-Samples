@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>account</key>
+	<array>
+		<string>jio</string>
+		<string>rbs</string>
+	</array>
+	<key>apiKey</key>
+	<array>
+		<string>8bad6dea-8da4-4679-a23f-b10e62c84de8</string>
+		<string>2fdce18f-4e7d-4517-8f72-4db07c755939</string>
+	</array>
+	<key>server</key>
+	<array>
+		<string>qa07</string>
+		<string>eu1-4</string>
+	</array>
+	<key>knowledgeBase</key>
+	<array>
+		<string>Staging</string>
+		<string>MyKnowledgeMobile</string>
+	</array>
+	<key>chatContentURL</key>
+	<array>
+		<string>https://cdn-customers.nanorep.com/v3/view-default.html</string>
+		<string>https://cdn-customers.nanorep.com/v3/view-rbs.html</string>
+	</array>
+	<key>nanorepContext</key>
+	<array>
+		<string></string>
+		<string>Branch_Banking_NatWest</string>
+	</array>
+</dict>
+</plist>
