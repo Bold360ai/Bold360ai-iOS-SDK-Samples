@@ -13,9 +13,9 @@ NR_ENGINE="../../../NanorepEngine/NanorepEngine-Dev.podspec"
 NR_ACCESSIBILITY="../../../NRAccessibility/NRAccessibility-Dev.podspec"
 
 # Production
-source 'https://github.com/nanorepsdk/NRSDK-specs.git'
+#source 'https://github.com/nanorepsdk/NRSDK-specs.git'
 # Dev
-#source 'https://github.com/nanorepsdk/NRSDK-Dev-specs.git'
+source 'https://github.com/nanorepsdk/NRSDK-Dev-specs.git'
 source 'https://github.com/CocoaPods/Specs'
 
 target 'ConversationDemo' do

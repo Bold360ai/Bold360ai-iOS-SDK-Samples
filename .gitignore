@@ -17,6 +17,9 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+## Local Account Params
+MyAccountParams.plist
+
 ## Other
 *.moved-aside
 *.xccheckout

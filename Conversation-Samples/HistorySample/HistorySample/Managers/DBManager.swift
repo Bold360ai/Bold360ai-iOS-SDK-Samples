@@ -30,8 +30,12 @@ class DBManager {
     }
     
     func deleteAllDatabase()  {
-        try! database.write {
-            database.deleteAll()
+        do {
+            try database.write({
+                database.deleteAll()
+            })
+        } catch  {
+            print("error")
         }
     }
     

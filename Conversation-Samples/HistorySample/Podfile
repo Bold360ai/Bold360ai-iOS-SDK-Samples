@@ -27,6 +27,6 @@ target 'HistorySample' do
         pod 'RealmSwift'
     else
         pod 'NanorepUI'
-        #pod 'SQLite.swift'
+        pod 'RealmSwift'
     end
 end
