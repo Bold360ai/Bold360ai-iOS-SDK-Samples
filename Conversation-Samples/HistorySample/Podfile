@@ -8,9 +8,10 @@ platform :ios, "9.0"
 use_frameworks!
 
 # Uncomment to use a local copy of PlayKit
-# NR_LOCAL="../../../NanorepUI/NanorepUI-Dev.podspec"
+NR_LOCAL="../../../NanorepUI/NanorepUI-Dev.podspec"
 NR_ENGINE="../../../NanorepEngine/NanorepEngine-Dev.podspec"
 NR_ACCESSIBILITY="../../../NRAccessibility/NRAccessibility-Dev.podspec"
+BLD_ENGINE="../../../Bold/BoldEngine/BoldEngine-Dev.podspec"
 
 # Dev
 #source 'https://github.com/nanorepsdk/NRSDK-Dev-specs.git'
@@ -23,7 +24,8 @@ target 'HistorySample' do
     if defined? NR_LOCAL 
         pod 'NanorepEngine', :path => NR_ENGINE
         pod 'NRAccessibility', :path => NR_ACCESSIBILITY
-        pod 'NanorepUI', :path => NR_LOCAL
+        pod 'BoldEngine', :path => BLD_ENGINE
+        pod 'NanorepUI/Bold', :path => NR_LOCAL
         pod 'RealmSwift'
     else
         pod 'NanorepUI'

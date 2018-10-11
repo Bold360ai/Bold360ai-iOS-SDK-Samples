@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		001C13C4C76549B6067168B2 /* Pods_HistorySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730BC8C13876FC2780D0AED0 /* Pods_HistorySample.framework */; };
-		AF004A04212AFCAF000CDD7F /* MyAccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF004A03212AFCAF000CDD7F /* MyAccountParams.plist */; };
 		AF30F40F212AC34300B0D3B9 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */; };
 		AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */; };
 		AF30F419212ACB0200B0D3B9 /* AccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF30F418212ACB0200B0D3B9 /* AccountParams.plist */; };
@@ -19,13 +18,13 @@
 		AF9862AA20CFEA9B00501472 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9862A920CFEA9B00501472 /* Assets.xcassets */; };
 		AF9862AD20CFEA9B00501472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9862AB20CFEA9B00501472 /* LaunchScreen.storyboard */; };
 		AFD520D8211B1B8700B7C448 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD520D7211B1B8700B7C448 /* Item.swift */; };
+		AFD9BFA2216B6F78007C8C45 /* MyAccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD9BFA1216B6F78007C8C45 /* MyAccountParams.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		730BC8C13876FC2780D0AED0 /* Pods_HistorySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistorySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD9336FFF2210F772308A09 /* Pods-HistorySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.release.xcconfig"; sourceTree = "<group>"; };
 		A2579D1DAB7B978B68BD2744 /* Pods-HistorySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.debug.xcconfig"; sourceTree = "<group>"; };
-		AF004A03212AFCAF000CDD7F /* MyAccountParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAccountParams.plist; sourceTree = "<group>"; };
 		AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountParamsHelper.swift; sourceTree = "<group>"; };
 		AF30F418212ACB0200B0D3B9 /* AccountParams.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AccountParams.plist; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		AF9862AC20CFEA9B00501472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF9862AE20CFEA9B00501472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFD520D7211B1B8700B7C448 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		AFD9BFA1216B6F78007C8C45 /* MyAccountParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAccountParams.plist; sourceTree = "<group>"; };
 		AFE6EF8921117535000CBD62 /* HistorySample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HistorySample-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,7 +74,7 @@
 		AF30F41A212AD63F00B0D3B9 /* LocalAccountParams */ = {
 			isa = PBXGroup;
 			children = (
-				AF004A03212AFCAF000CDD7F /* MyAccountParams.plist */,
+				AFD9BFA1216B6F78007C8C45 /* MyAccountParams.plist */,
 				AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */,
 				AF30F418212ACB0200B0D3B9 /* AccountParams.plist */,
 			);
@@ -186,10 +186,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF004A04212AFCAF000CDD7F /* MyAccountParams.plist in Resources */,
 				AF9862AD20CFEA9B00501472 /* LaunchScreen.storyboard in Resources */,
 				AF9862AA20CFEA9B00501472 /* Assets.xcassets in Resources */,
 				AF30F419212ACB0200B0D3B9 /* AccountParams.plist in Resources */,
+				AFD9BFA2216B6F78007C8C45 /* MyAccountParams.plist in Resources */,
 				AF9862A820CFEA9B00501472 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,14 +204,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample-frameworks.sh",
-				"${PODS_ROOT}/NRAccessibility/NRAccessibility.framework",
-				"${PODS_ROOT}/NanorepEngine/NanorepEngine.framework",
-				"${PODS_ROOT}/NanorepUI/NanorepUI.framework",
+				"${BUILT_PRODUCTS_DIR}/BoldEngine/BoldEngine.framework",
+				"${BUILT_PRODUCTS_DIR}/NRAccessibility/NRAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/NanorepEngine/NanorepEngine.framework",
+				"${BUILT_PRODUCTS_DIR}/NanorepUI/NanorepUI.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldEngine.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NRAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NanorepEngine.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NanorepUI.framework",
