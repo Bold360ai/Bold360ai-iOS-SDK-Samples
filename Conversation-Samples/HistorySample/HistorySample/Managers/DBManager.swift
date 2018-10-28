@@ -6,7 +6,7 @@
 
 import Foundation
 import RealmSwift
-import NanorepUI
+import BoldUI
 
 class DBManager {
     
