@@ -91,6 +91,7 @@ class AccountViewController: UIViewController {
         config.withNavBar = true
         self.chatController.delegate = self
         self.chatController.handOver = self
+        self.chatController.continuityProvider = self
         self.chatController.uiConfiguration = config
         self.chatController.historyProvider = self
         self.chatController.speechReconitionDelegate = self
@@ -165,6 +166,19 @@ extension AccountViewController: ContextTableViewCellDelegate {
         self.canAddContext = true
         if let index = self.contextTableView.indexPath(for: forCell)?.row {
             self.context[index] = context
+        }
+    }
+}
+
+extension AccountViewController: ContinuityProvider {
+    func updateContinuityInfo(_ params: [String : NSNumber]!) {
+        UserDefaults.standard.setValuesForKeys(params)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func fetchContinuity(forKey key: String!, handler: ((NSNumber?) -> Void)!) {
+        if let someId = UserDefaults.standard.object(forKey: key) {
+            handler(someId as? NSNumber)
         }
     }
 }
