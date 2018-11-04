@@ -6,7 +6,7 @@
 
 import Foundation
 import RealmSwift
-import BoldUI
+import NanorepUI
 import Realm
 
 class Item: Object, StorableChatElement {
