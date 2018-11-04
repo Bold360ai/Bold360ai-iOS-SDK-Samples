@@ -87,6 +87,7 @@ class ViewController: UIViewController {
         self.chatController.handOver = self
         self.chatController.uiConfiguration = config
         self.chatController.historyProvider = self
+        self.chatController.continuityProvider = self
         self.chatController.speechReconitionDelegate = self
         self.chatController.initialize = { controller, configuration, error in
             if let vc = controller {
@@ -172,6 +173,19 @@ extension ViewController:  UIPickerViewDelegate, UIPickerViewDataSource {
 /************************************************************/
 
 extension ViewController: ChatHandler {
+    var continuityProvider: ContinuityProvider! {
+        get {
+            return nil
+        }
+        set(continuityProvider) {
+            
+        }
+    }
+    
+    func postArticle(_ articleId: String!) {
+        
+    }
+    
     func startChat(_ chatInfo: [AnyHashable : Any]!) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.navigationController?.viewControllers.last?.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(ViewController.stopLiveChat(sender:))), animated: true)
@@ -319,6 +333,18 @@ extension ViewController: HistoryProvider {
     
     func update(_ timestampId: TimeInterval, newTimestamp: TimeInterval, status: StatementStatus) {
         print("update")
+    }
+}
+
+extension ViewController: ContinuityProvider {
+    func updateContinuityInfo(_ params: [String : NSNumber]!) {
+        print("updateContinuityInfo")
+        UserDefaults.standard.setValuesForKeys(params)
+    }
+    
+    func fetchContinuity(forKey key: String!, handler: ((NSNumber?) -> Void)!) {
+        print("fetchContinuityForKey")
+        handler(userDefaults.value(forKey: key) as? NSNumber)
     }
 }
 

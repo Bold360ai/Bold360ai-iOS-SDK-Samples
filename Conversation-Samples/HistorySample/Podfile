@@ -27,7 +27,7 @@ target 'HistorySample' do
         pod 'BoldAIAccessibility', :path => BLD_AI_ACCESSIBILITY
         pod 'BoldEngine', :path => BLD_ENGINE
         pod 'BoldUI', :path => BLD_UI
-     #   pod 'Bold360AI', :path => BLD_360_AI
+        pod 'Bold360AI', :path => BLD_360_AI
         pod 'RealmSwift'
     else
         pod 'Bold360AI'
