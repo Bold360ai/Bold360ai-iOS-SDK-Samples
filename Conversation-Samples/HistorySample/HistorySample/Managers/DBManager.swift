@@ -6,7 +6,7 @@
 
 import Foundation
 import RealmSwift
-import NanorepUI
+import BoldUI
 
 class DBManager {
     
@@ -17,10 +17,24 @@ class DBManager {
         database = try! Realm()
     }
     
-    func getDataFromDB() -> Results<Item> {
+    func getDataFromDB() -> Results<Item>? {
         let results: Results<Item> =  database.objects(Item.self)
+        if results.count == 0 {
+            return nil
+        }
         return results
     }
+    
+//    func fetchAccounts() -> Results<NanorepAccount> {
+//        let results: Results<NanorepAccount> = database.objects(NanorepAccount.self)
+//        return results
+//    }
+    
+//    func addAccount(account: NanorepAccount)  {
+//        try! database.write {
+//            database.add(account, update: true)
+//        }
+//    }
     
     func addData(object: Item) {
         try! database.write {
