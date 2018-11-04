@@ -203,11 +203,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bold360AI/Bold360AI.framework",
-				"${BUILT_PRODUCTS_DIR}/BoldAIAccessibility/BoldAIAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/BoldAIEngine/BoldAIEngine.framework",
-				"${BUILT_PRODUCTS_DIR}/BoldEngine/BoldEngine.framework",
-				"${BUILT_PRODUCTS_DIR}/BoldUI/BoldUI.framework",
+				"${PODS_ROOT}/Bold360AI/Bold360AI.framework",
+				"${PODS_ROOT}/BoldAIAccessibility/BoldAIAccessibility.framework",
+				"${PODS_ROOT}/BoldAIEngine/BoldAIEngine.framework",
+				"${PODS_ROOT}/BoldEngine/BoldEngine.framework",
+				"${PODS_ROOT}/BoldUI/BoldUI.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);

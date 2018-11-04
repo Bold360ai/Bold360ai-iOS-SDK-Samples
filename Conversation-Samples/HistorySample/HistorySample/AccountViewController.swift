@@ -64,7 +64,7 @@ class AccountViewController: UIViewController {
     @IBAction func presentNanorep(_ sender: UIBarButtonItem) {
         spinner.sizeToFit()
         spinner.startAnimating()
-        spinner.color = UIColor.lightBlue()
+        spinner.color = UIColor.lightGray
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
         let account = AccountParams()
         account.account = self.accountName.text
