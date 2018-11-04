@@ -25,15 +25,13 @@ class ViewController: UIViewController {
     var chatHandlerProvider: ChatHandlerProvider!
     var historyElements = [String: Array<StorableChatElement>]()
     let historyStatementsDB = DBManager.sharedInstance
-    let localAccountParams = AccountParamsHelper.getLocalParams()
     let userDefaults = UserDefaults.standard
     
-    private var accountParams: AccountParams?
+    var accountParams: AccountParams?
     var chatController: NRChatController!
     // Every bot controller that is created should own Reachability instance
     let reachability = Reachability()
     
-    @IBOutlet weak var accountPickerView: UIPickerView!
     @IBOutlet weak var welcomeMsgSwitch: UISwitch!
     
     /************************************************************/
@@ -43,8 +41,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addReachabilityObserver()
-        self.accountPickerView.delegate = self
-        self.accountPickerView.dataSource = self
+//        self.accountPickerView.delegate = self
+//        self.accountPickerView.dataSource = self
+        self.loadNanorep(nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,18 +51,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setupAccountParams() -> AccountParams {
-        let params = AccountParams()
-        let index = accountPickerView.selectedRow(inComponent: 0)
-        
-        params.account = localAccountParams[AccountParamsHelper.accountParamsKeys.Account]?[index]
-        params.knowledgeBase = localAccountParams[AccountParamsHelper.accountParamsKeys.KnowledgeBase]?[index]
-        params.apiKey = localAccountParams[AccountParamsHelper.accountParamsKeys.ApiKey]?[index]
-        params.nanorepContext = ["UserRole": localAccountParams[AccountParamsHelper.accountParamsKeys.NanorepContext]?[index]] as! [String : String]
-        params.perform(Selector.init(("setServer:")), with: localAccountParams[AccountParamsHelper.accountParamsKeys.Server]?[index])
-        
-        return params
-    }
+//    func setupAccountParams() -> AccountParams {
+//        let params = AccountParams()
+//        let index = accountPickerView.selectedRow(inComponent: 0)
+//
+//        params.account = localAccountParams[AccountParamsHelper.accountParamsKeys.Account]?[index]
+//        params.knowledgeBase = localAccountParams[AccountParamsHelper.accountParamsKeys.KnowledgeBase]?[index]
+//        params.apiKey = localAccountParams[AccountParamsHelper.accountParamsKeys.ApiKey]?[index]
+//        params.nanorepContext = ["UserRole": localAccountParams[AccountParamsHelper.accountParamsKeys.NanorepContext]?[index]] as! [String : String]
+//        params.perform(Selector.init(("setServer:")), with: localAccountParams[AccountParamsHelper.accountParamsKeys.Server]?[index])
+//
+//        return params
+//    }
     
     @objc func stopLiveChat(sender: UIBarButtonItem) {
         self.navigationController?.viewControllers.last?.navigationItem.setRightBarButton(nil, animated: true)
@@ -76,12 +75,12 @@ class ViewController: UIViewController {
     // MARK: - Actions
     /************************************************************/
     
-    @IBAction func loadNanorep(_ sender: UIButton) {
-        let index = accountPickerView.selectedRow(inComponent: 0)
+    @IBAction func loadNanorep(_ sender: UIButton?) {
+//        let index = accountPickerView.selectedRow(inComponent: 0)
         let config: NRBotConfiguration = NRBotConfiguration()
-        self.accountParams = self.setupAccountParams()
+//        self.accountParams = self.setupAccountParams()
         self.chatController = NRChatController(account: self.accountParams)
-        config.chatContentURL = URL.init(string:(AccountParamsHelper.getLocalParams()[AccountParamsHelper.accountParamsKeys.ChatContentURL]?[index])!)
+        config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-rbs.html")
         config.withNavBar = true
         self.chatController.delegate = self
         self.chatController.handOver = self
@@ -148,30 +147,16 @@ extension ViewController {
     }
 }
 
-/************************************************************/
-// MARK: - UIPickerViewDelegate & UIPickerViewDataSource
-/************************************************************/
-
-extension ViewController:  UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let localAccountParams = AccountParamsHelper.getLocalParams()
-        return (localAccountParams[AccountParamsHelper.accountParamsKeys.Account]?.count)!
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return localAccountParams[AccountParamsHelper.accountParamsKeys.Account]?[row]
-    }
-}
 
 /************************************************************/
 // MARK: - ChatHandler
 /************************************************************/
 
 extension ViewController: ChatHandler {
+    func postArticle(_ articleId: String!) {
+        
+    }
+    
     func startChat(_ chatInfo: [AnyHashable : Any]!) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.navigationController?.viewControllers.last?.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(ViewController.stopLiveChat(sender:))), animated: true)

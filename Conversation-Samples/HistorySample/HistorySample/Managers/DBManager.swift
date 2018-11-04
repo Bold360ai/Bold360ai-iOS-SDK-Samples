@@ -22,6 +22,17 @@ class DBManager {
         return results
     }
     
+//    func fetchAccounts() -> Results<NanorepAccount> {
+//        let results: Results<NanorepAccount> = database.objects(NanorepAccount.self)
+//        return results
+//    }
+    
+//    func addAccount(account: NanorepAccount)  {
+//        try! database.write {
+//            database.add(account, update: true)
+//        }
+//    }
+    
     func addData(object: Item) {
         try! database.write {
             database.add(object, update: true)

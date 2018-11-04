@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		001C13C4C76549B6067168B2 /* Pods_HistorySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730BC8C13876FC2780D0AED0 /* Pods_HistorySample.framework */; };
+		48C27BCD2189EEA4000B5BF4 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C27BCC2189EEA4000B5BF4 /* AccountViewController.swift */; };
+		48C27BD12189F84F000B5BF4 /* ContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */; };
 		AF30F40F212AC34300B0D3B9 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */; };
 		AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */; };
 		AF30F419212ACB0200B0D3B9 /* AccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF30F418212ACB0200B0D3B9 /* AccountParams.plist */; };
@@ -18,10 +20,11 @@
 		AF9862AA20CFEA9B00501472 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9862A920CFEA9B00501472 /* Assets.xcassets */; };
 		AF9862AD20CFEA9B00501472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9862AB20CFEA9B00501472 /* LaunchScreen.storyboard */; };
 		AFD520D8211B1B8700B7C448 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD520D7211B1B8700B7C448 /* Item.swift */; };
-		AFD9BFA2216B6F78007C8C45 /* MyAccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD9BFA1216B6F78007C8C45 /* MyAccountParams.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48C27BCC2189EEA4000B5BF4 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextTableViewCell.swift; sourceTree = "<group>"; };
 		730BC8C13876FC2780D0AED0 /* Pods_HistorySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistorySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD9336FFF2210F772308A09 /* Pods-HistorySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.release.xcconfig"; sourceTree = "<group>"; };
 		A2579D1DAB7B978B68BD2744 /* Pods-HistorySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -37,7 +40,6 @@
 		AF9862AC20CFEA9B00501472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF9862AE20CFEA9B00501472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFD520D7211B1B8700B7C448 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		AFD9BFA1216B6F78007C8C45 /* MyAccountParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAccountParams.plist; sourceTree = "<group>"; };
 		AFE6EF8921117535000CBD62 /* HistorySample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HistorySample-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,7 +76,6 @@
 		AF30F41A212AD63F00B0D3B9 /* LocalAccountParams */ = {
 			isa = PBXGroup;
 			children = (
-				AFD9BFA1216B6F78007C8C45 /* MyAccountParams.plist */,
 				AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */,
 				AF30F418212ACB0200B0D3B9 /* AccountParams.plist */,
 			);
@@ -107,11 +108,13 @@
 				AF30F410212AC35500B0D3B9 /* Managers */,
 				AFD520D7211B1B8700B7C448 /* Item.swift */,
 				AF9862A220CFEA9B00501472 /* AppDelegate.swift */,
+				48C27BCC2189EEA4000B5BF4 /* AccountViewController.swift */,
 				AF9862A420CFEA9B00501472 /* ViewController.swift */,
 				AF9862A620CFEA9B00501472 /* Main.storyboard */,
 				AF9862A920CFEA9B00501472 /* Assets.xcassets */,
 				AF9862AB20CFEA9B00501472 /* LaunchScreen.storyboard */,
 				AF9862AE20CFEA9B00501472 /* Info.plist */,
+				48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */,
 			);
 			path = HistorySample;
 			sourceTree = "<group>";
@@ -189,7 +192,6 @@
 				AF9862AD20CFEA9B00501472 /* LaunchScreen.storyboard in Resources */,
 				AF9862AA20CFEA9B00501472 /* Assets.xcassets in Resources */,
 				AF30F419212ACB0200B0D3B9 /* AccountParams.plist in Resources */,
-				AFD9BFA2216B6F78007C8C45 /* MyAccountParams.plist in Resources */,
 				AF9862A820CFEA9B00501472 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +254,8 @@
 			files = (
 				AFD520D8211B1B8700B7C448 /* Item.swift in Sources */,
 				AF9862A520CFEA9B00501472 /* ViewController.swift in Sources */,
+				48C27BCD2189EEA4000B5BF4 /* AccountViewController.swift in Sources */,
+				48C27BD12189F84F000B5BF4 /* ContextTableViewCell.swift in Sources */,
 				AF93D213211B1AF800D8AC49 /* DBManager.swift in Sources */,
 				AF30F40F212AC34300B0D3B9 /* ReachabilityManager.swift in Sources */,
 				AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */,
