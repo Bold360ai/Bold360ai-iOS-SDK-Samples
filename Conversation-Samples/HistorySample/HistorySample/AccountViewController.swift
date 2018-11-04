@@ -172,14 +172,14 @@ extension AccountViewController: ContextTableViewCellDelegate {
 
 extension AccountViewController: ContinuityProvider {
     func updateContinuityInfo(_ params: [String : NSNumber]!) {
+        print("updateContinuityInfo")
         UserDefaults.standard.setValuesForKeys(params)
         UserDefaults.standard.synchronize()
     }
     
     func fetchContinuity(forKey key: String!, handler: ((NSNumber?) -> Void)!) {
-        if let someId = UserDefaults.standard.object(forKey: key) {
-            handler(someId as? NSNumber)
-        }
+        print("fetchContinuityForKey")
+        handler(UserDefaults.standard.value(forKey: key) as? NSNumber)
     }
 }
 
@@ -229,7 +229,7 @@ extension AccountViewController: NRChatControllerDelegate {
     
     private func handleWelcomeMsgPresentation() -> Bool {
         if self.withWelcomeMessage.isOn {
-            return false
+            return true
         }
         
         let welcomeMsgTime = UserDefaults.standard.object(forKey: "WelcomeMsgTime") as? TimeInterval

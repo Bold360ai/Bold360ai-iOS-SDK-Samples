@@ -8,10 +8,10 @@ platform :ios, "9.0"
 use_frameworks!
 
 # Uncomment to use a local copy of PlayKit
-BLD_UI="../../../BoldAI/BoldUI/BoldUI-Dev.podspec"
-BLD_AI_ENGINE="../../../BoldAI/BoldAIEngine/BoldAIEngine-Dev.podspec"
-BLD_AI_ACCESSIBILITY="../../../BoldAI/BoldAIAccessibility/BoldAIAccessibility-Dev.podspec"
-BLD_ENGINE="../../../BoldEngine/BoldEngine-Dev.podspec"
+BLD_UI="../../../BoldUI/BoldUI-Dev.podspec"
+BLD_AI_ENGINE="../../../BoldAIEngine/BoldAIEngine-Dev.podspec"
+BLD_AI_ACCESSIBILITY="../../../BoldAIAccessibility/BoldAIAccessibility-Dev.podspec"
+BLD_ENGINE="../../../Bold/BoldEngine/BoldEngine-Dev.podspec"
 BLD_360_AI="../../../Bold360AI/Bold360AI-Dev.podspec"
 
 # Dev
@@ -27,7 +27,7 @@ target 'HistorySample' do
         pod 'BoldAIAccessibility', :path => BLD_AI_ACCESSIBILITY
         pod 'BoldEngine', :path => BLD_ENGINE
         pod 'BoldUI', :path => BLD_UI
-     #   pod 'Bold360AI', :path => BLD_360_AI
+       pod 'Bold360AI', :path => BLD_360_AI
         pod 'RealmSwift'
     else
         pod 'Bold360AI'

@@ -203,6 +203,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bold360AI/Bold360AI.framework",
 				"${BUILT_PRODUCTS_DIR}/BoldAIAccessibility/BoldAIAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/BoldAIEngine/BoldAIEngine.framework",
 				"${BUILT_PRODUCTS_DIR}/BoldEngine/BoldEngine.framework",
@@ -212,6 +213,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bold360AI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldAIAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldAIEngine.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldEngine.framework",
