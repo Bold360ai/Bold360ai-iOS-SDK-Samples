@@ -8,7 +8,7 @@ platform :ios, "9.0"
 use_frameworks!
 
 # Uncomment to use a local copy of PlayKit
-BLD_UI="../../../BoldUI/BoldUI-Dev.podspec"
+# BLD_UI="../../../BoldUI/BoldUI-Dev.podspec"
 BLD_AI_ENGINE="../../../BoldAIEngine/BoldAIEngine-Dev.podspec"
 BLD_AI_ACCESSIBILITY="../../../BoldAIAccessibility/BoldAIAccessibility-Dev.podspec"
 BLD_ENGINE="../../../Bold/BoldEngine/BoldEngine-Dev.podspec"
