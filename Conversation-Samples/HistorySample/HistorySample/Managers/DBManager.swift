@@ -17,8 +17,11 @@ class DBManager {
         database = try! Realm()
     }
     
-    func getDataFromDB() -> Results<Item> {
+    func getDataFromDB() -> Results<Item>? {
         let results: Results<Item> =  database.objects(Item.self)
+        if results.count == 0 {
+            return nil
+        }
         return results
     }
     

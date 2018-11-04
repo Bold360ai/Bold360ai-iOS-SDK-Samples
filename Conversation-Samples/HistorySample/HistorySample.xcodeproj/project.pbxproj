@@ -15,7 +15,6 @@
 		AF30F419212ACB0200B0D3B9 /* AccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF30F418212ACB0200B0D3B9 /* AccountParams.plist */; };
 		AF93D213211B1AF800D8AC49 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF93D212211B1AF800D8AC49 /* DBManager.swift */; };
 		AF9862A320CFEA9B00501472 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9862A220CFEA9B00501472 /* AppDelegate.swift */; };
-		AF9862A520CFEA9B00501472 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9862A420CFEA9B00501472 /* ViewController.swift */; };
 		AF9862A820CFEA9B00501472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9862A620CFEA9B00501472 /* Main.storyboard */; };
 		AF9862AA20CFEA9B00501472 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9862A920CFEA9B00501472 /* Assets.xcassets */; };
 		AF9862AD20CFEA9B00501472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9862AB20CFEA9B00501472 /* LaunchScreen.storyboard */; };
@@ -34,7 +33,6 @@
 		AF93D212211B1AF800D8AC49 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		AF98629F20CFEA9B00501472 /* HistorySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistorySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9862A220CFEA9B00501472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF9862A420CFEA9B00501472 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF9862A720CFEA9B00501472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF9862A920CFEA9B00501472 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF9862AC20CFEA9B00501472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				AFD520D7211B1B8700B7C448 /* Item.swift */,
 				AF9862A220CFEA9B00501472 /* AppDelegate.swift */,
 				48C27BCC2189EEA4000B5BF4 /* AccountViewController.swift */,
-				AF9862A420CFEA9B00501472 /* ViewController.swift */,
 				AF9862A620CFEA9B00501472 /* Main.storyboard */,
 				AF9862A920CFEA9B00501472 /* Assets.xcassets */,
 				AF9862AB20CFEA9B00501472 /* LaunchScreen.storyboard */,
@@ -253,7 +250,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD520D8211B1B8700B7C448 /* Item.swift in Sources */,
-				AF9862A520CFEA9B00501472 /* ViewController.swift in Sources */,
 				48C27BCD2189EEA4000B5BF4 /* AccountViewController.swift in Sources */,
 				48C27BD12189F84F000B5BF4 /* ContextTableViewCell.swift in Sources */,
 				AF93D213211B1AF800D8AC49 /* DBManager.swift in Sources */,
