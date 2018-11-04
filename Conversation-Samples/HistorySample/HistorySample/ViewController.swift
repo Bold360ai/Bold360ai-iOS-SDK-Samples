@@ -172,16 +172,7 @@ extension ViewController:  UIPickerViewDelegate, UIPickerViewDataSource {
 // MARK: - ChatHandler
 /************************************************************/
 
-extension ViewController: ChatHandler {
-    var continuityProvider: ContinuityProvider! {
-        get {
-            return nil
-        }
-        set(continuityProvider) {
-            
-        }
-    }
-    
+extension ViewController: ChatHandler {   
     func postArticle(_ articleId: String!) {
         
     }
