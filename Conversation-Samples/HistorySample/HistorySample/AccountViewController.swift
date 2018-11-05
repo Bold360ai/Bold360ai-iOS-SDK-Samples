@@ -86,7 +86,6 @@ class AccountViewController: UIViewController {
         account.nanorepContext = temp
         
         let config: NRBotConfiguration = NRBotConfiguration()
-        //        self.accountParams = self.setupAccountParams()
         self.chatController = NRChatController(account: account)
         config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
         config.withNavBar = true
@@ -139,6 +138,13 @@ extension AccountViewController: UITableViewDelegate {
         button.setTitleColor(UIColor.red, for: .normal)
         button.addTarget(self, action: #selector(AccountViewController.addContext), for: .touchUpInside)
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && self.context.count > 1 {
+            self.context.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 
