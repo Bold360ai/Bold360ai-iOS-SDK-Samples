@@ -72,6 +72,10 @@ class AccountViewController: UIViewController {
         
         if (self.apiKey.text?.count)! > 0 {
             account.apiKey = self.apiKey.text
+        } else {
+//          If the APIkey is empty the app should send
+//          a space instead of empty string at the request
+            account.apiKey = " "
         }
         
         if (self.server.text?.count)! > 0 {
