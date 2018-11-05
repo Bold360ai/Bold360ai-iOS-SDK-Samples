@@ -1,10 +1,8 @@
-//
-//  AccountViewController.swift
-//  HistorySample
-//
-//  Created by Nissim Pardo on 31/10/2018.
-//  Copyright © 2018 bold360ai. All rights reserved.
-//
+// ===================================================================================================
+// Copyright © 2016 bold360ai(LogMeIn).
+// BoldAIEngine SDK.
+// All rights reserved.
+// ===================================================================================================
 
 import UIKit
 import BoldAIEngine
@@ -47,6 +45,8 @@ class AccountViewController: UIViewController {
                                                selector: #selector(AccountViewController.updateHeight(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillHide,
                                                object: nil)
+        
+        self.addReachabilityObserver()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,12 +69,13 @@ class AccountViewController: UIViewController {
         let account = AccountParams()
         account.account = self.accountName.text
         account.knowledgeBase = self.kb.text
+        
         if (self.apiKey.text?.count)! > 0 {
             account.apiKey = self.apiKey.text
         }
         
         if (self.server.text?.count)! > 0 {
-            account.perform(Selector.init("setServer:"), with:self.server.text)
+            account.perform(#selector(setter: AccountViewController.server), with:self.server.text)
         }
         
         
