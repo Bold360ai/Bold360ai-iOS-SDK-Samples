@@ -12,7 +12,7 @@ import BoldUI
 
 class AccountViewController: UIViewController {
     
-    var context = [["": ""]]
+    var context: [[String: String]]!
     var canAddContext: Bool = false
     
     @IBOutlet weak var accountName: UITextField!
@@ -47,6 +47,13 @@ class AccountViewController: UIViewController {
                                                selector: #selector(AccountViewController.updateHeight(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillHide,
                                                object: nil)
+        if let accountParams = UserDefaults.standard.dictionary(forKey: "Account") as? [String: String] {
+            self.accountName.text = accountParams["accountName"]
+            self.kb.text = accountParams["kb"]
+            self.apiKey.text = accountParams["apiKey"]
+            self.server.text = accountParams["server"]
+        }
+        self.context = UserDefaults.standard.array(forKey: "Contexts") as? [[String: String]] ?? [["": ""]]
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,16 +84,21 @@ class AccountViewController: UIViewController {
             account.perform(Selector.init("setServer:"), with:self.server.text)
         }
         
-        
+        var storeAccount = [String: String]()
+        storeAccount["accountName"] = self.accountName.text
+        storeAccount["kb"] = self.kb.text
+        storeAccount["apiKey"] = self.apiKey.text
+        storeAccount["server"] = self.server.text
+        UserDefaults.standard.set(storeAccount, forKey: "Account")
+        UserDefaults.standard.set(self.context, forKey: "Contexts")
+        UserDefaults.standard.synchronize()
         var temp = [String: String]()
         self.context.forEach { (val) in
             temp[val.keys.first!] = val.values.first
         }
-        account.nanorepContext = temp
-        
         let config: NRBotConfiguration = NRBotConfiguration()
         self.chatController = NRChatController(account: account)
-        config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
+        config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-rbs.html")
         config.withNavBar = true
         self.chatController.delegate = self
         self.chatController.handOver = self
