@@ -404,7 +404,7 @@
 				DEVELOPMENT_TEAM = 86JD9PF36X;
 				INFOPLIST_FILE = HistorySample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bold360ai.example.HistorySample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bold360ai.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HistorySample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -423,7 +423,7 @@
 				DEVELOPMENT_TEAM = 86JD9PF36X;
 				INFOPLIST_FILE = HistorySample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bold360ai.example.HistorySample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bold360ai.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HistorySample-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
