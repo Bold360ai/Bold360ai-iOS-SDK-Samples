@@ -91,6 +91,10 @@ class AccountViewController: UIViewController {
         
         let config: NRBotConfiguration = NRBotConfiguration()
         self.chatController = NRChatController(account: account)
+        let viewConfig = ChatConfiguration();
+        viewConfig.backgroundColor = UIColor.red;
+        viewConfig.incomingBotConfig.backgroundColor = UIColor.red;
+        self.chatController.viewConiguration = viewConfig;
         config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
         config.withNavBar = true
         self.chatController.delegate = self
@@ -128,8 +132,6 @@ class AccountViewController: UIViewController {
             self.contextTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
-    
-
 }
 
 extension AccountViewController: UITableViewDelegate {
@@ -168,8 +170,6 @@ extension AccountViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.context.count
     }
-    
-    
 }
 
 extension AccountViewController: ContextTableViewCellDelegate {
@@ -283,7 +283,7 @@ extension AccountViewController: ChatHandler {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.delegate.update(StatementStatus.OK, element: statement)
         }
-        let remote = RemoteChatElement(type: .RemoteElement, content: "Hello from Live Agent: \(String(describing: statement?.text))")
+        let remote = RemoteChatElement(type: .IncomingLiveElement, content: "Hello from Live Agent: \(String(describing: statement?.text))")
         remote?.design = ChatElementDesignCustomIncoming
         remote?.agentType = .Live
         

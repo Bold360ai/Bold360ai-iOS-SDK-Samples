@@ -55,7 +55,7 @@ class Item: Object, StorableChatElement {
     dynamic var storageKey: String!
     dynamic var agentType: AgentType = .Bot
     dynamic var status: StatementStatus = .Pending
-    dynamic var type: ChatElementType = .LocalElement
+    dynamic var type: ChatElementType = .OutgoingElement
     dynamic var text: String!
     dynamic var source: ChatElementSource = .history
     dynamic var elementId: NSNumber = 0.0
