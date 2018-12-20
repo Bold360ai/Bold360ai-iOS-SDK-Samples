@@ -9,6 +9,7 @@ use_frameworks!
 
 # Uncomment to use a local copy of PlayKit
 # BLD_UI="../../../BoldUI/BoldUI-Dev.podspec"
+BLD_CORE="../../../Bold360AI/BoldCore-Dev.podspec"
 BLD_AI_ENGINE="../../../BoldAIEngine/BoldAIEngine-Dev.podspec"
 BLD_AI_ACCESSIBILITY="../../../BoldAIAccessibility/BoldAIAccessibility-Dev.podspec"
 BLD_ENGINE="../../../Bold/BoldEngine/BoldEngine-Dev.podspec"
@@ -23,6 +24,7 @@ source 'https://github.com/CocoaPods/Specs'
 
 target 'HistorySample' do
     if defined? BLD_UI 
+        pod 'BoldCore', :path => BLD_CORE
         pod 'BoldAIEngine', :path => BLD_AI_ENGINE
         pod 'BoldAIAccessibility', :path => BLD_AI_ACCESSIBILITY
         pod 'BoldEngine', :path => BLD_ENGINE

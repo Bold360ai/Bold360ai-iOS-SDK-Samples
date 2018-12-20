@@ -67,8 +67,8 @@ class AccountViewController: UIViewController {
         spinner.color = UIColor.lightGray
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
         let account = AccountParams()
-        account.account = self.accountName.text
-        account.knowledgeBase = self.kb.text
+        account.account = "jio"//self.accountName.text
+        account.knowledgeBase = "Staging"//self.kb.text
         
         if (self.apiKey.text?.count)! > 0 {
             account.apiKey = self.apiKey.text
@@ -79,7 +79,7 @@ class AccountViewController: UIViewController {
         }
         
         if (self.server.text?.count)! > 0 {
-            account.perform(#selector(setter: AccountViewController.server), with:self.server.text)
+            account.perform(#selector(setter: AccountViewController.server), with:"qa07")//self.server.text)
         }
         
         
@@ -95,7 +95,7 @@ class AccountViewController: UIViewController {
         viewConfig.backgroundColor = UIColor.red;
         viewConfig.incomingBotConfig.backgroundColor = UIColor.red;
         self.chatController.viewConiguration = viewConfig;
-        config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
+        config.chatContentURL = URL(string: "http://localhost:8000/view-hackathon.html")//(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
         config.withNavBar = true
         self.chatController.delegate = self
         self.chatController.handOver = self
