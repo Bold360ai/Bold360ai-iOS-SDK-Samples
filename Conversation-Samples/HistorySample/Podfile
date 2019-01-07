@@ -8,11 +8,12 @@ platform :ios, "9.0"
 use_frameworks!
 
 # Uncomment to use a local copy of PlayKit
-# BLD_UI="../../../BoldUI/BoldUI-Dev.podspec"
-BLD_AI_ENGINE="../../../BoldAIEngine/BoldAIEngine-Dev.podspec"
-BLD_AI_ACCESSIBILITY="../../../BoldAIAccessibility/BoldAIAccessibility-Dev.podspec"
-BLD_ENGINE="../../../Bold/BoldEngine/BoldEngine-Dev.podspec"
-BLD_360_AI="../../../Bold360AI/Bold360AI-Dev.podspec"
+BLD_UI="../../../BoldAI/BoldUI/BoldUI-Dev.podspec"
+BLD_CORE="../../../BoldAI/BoldCore/BoldCore-Dev.podspec"
+BLD_AI_ENGINE="../../../BoldAI/BoldAIEngine/BoldAIEngine-Dev.podspec"
+BLD_AI_ACCESSIBILITY="../../../BoldAI/BoldAIAccessibility/BoldAIAccessibility-Dev.podspec"
+BLD_ENGINE="../../../BoldAI/BoldEngine/BoldEngine-Dev.podspec"
+BLD_360_AI="../../../BoldAI/Bold360AI/Bold360AI-Dev.podspec"
 
 # Dev
 source 'https://github.com/nanorepsdk/NRSDK-Dev-specs.git'
@@ -23,11 +24,12 @@ source 'https://github.com/CocoaPods/Specs'
 
 target 'HistorySample' do
     if defined? BLD_UI 
+        pod 'BoldCore', :path => BLD_CORE
         pod 'BoldAIEngine', :path => BLD_AI_ENGINE
         pod 'BoldAIAccessibility', :path => BLD_AI_ACCESSIBILITY
         pod 'BoldEngine', :path => BLD_ENGINE
         pod 'BoldUI', :path => BLD_UI
-       pod 'Bold360AI', :path => BLD_360_AI
+    #    pod 'Bold360AI', :path => BLD_360_AI
         pod 'RealmSwift'
     else
         pod 'Bold360AI'
