@@ -11,6 +11,11 @@
 		48C27BCD2189EEA4000B5BF4 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C27BCC2189EEA4000B5BF4 /* AccountViewController.swift */; };
 		48C27BD12189F84F000B5BF4 /* ContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */; };
 		48E3C8FA21E36F3300B2E11B /* BoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C8F921E36F3300B2E11B /* BoldViewController.swift */; };
+		48E3C90321E38EF700B2E11B /* PostChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C8FE21E38EF700B2E11B /* PostChatViewController.swift */; };
+		48E3C90421E38EF700B2E11B /* RatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C8FF21E38EF700B2E11B /* RatingCell.swift */; };
+		48E3C90521E38EF700B2E11B /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C90021E38EF700B2E11B /* TextCell.swift */; };
+		48E3C90621E38EF700B2E11B /* OptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C90121E38EF700B2E11B /* OptionsCell.swift */; };
+		48E3C90721E38EF700B2E11B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C90221E38EF700B2E11B /* RatingControl.swift */; };
 		AF30F40F212AC34300B0D3B9 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */; };
 		AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */; };
 		AF30F419212ACB0200B0D3B9 /* AccountParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF30F418212ACB0200B0D3B9 /* AccountParams.plist */; };
@@ -27,6 +32,11 @@
 		48C27BCC2189EEA4000B5BF4 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextTableViewCell.swift; sourceTree = "<group>"; };
 		48E3C8F921E36F3300B2E11B /* BoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldViewController.swift; sourceTree = "<group>"; };
+		48E3C8FE21E38EF700B2E11B /* PostChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostChatViewController.swift; sourceTree = "<group>"; };
+		48E3C8FF21E38EF700B2E11B /* RatingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingCell.swift; sourceTree = "<group>"; };
+		48E3C90021E38EF700B2E11B /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
+		48E3C90121E38EF700B2E11B /* OptionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCell.swift; sourceTree = "<group>"; };
+		48E3C90221E38EF700B2E11B /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		861C4C8206595C4AE96E6AFC /* Pods-HistorySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.release.xcconfig"; sourceTree = "<group>"; };
 		931FE0F5825B03F68C66964C /* Pods-HistorySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.debug.xcconfig"; sourceTree = "<group>"; };
 		AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
@@ -55,6 +65,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48E3C8FD21E38EF700B2E11B /* PostChat */ = {
+			isa = PBXGroup;
+			children = (
+				48E3C8FE21E38EF700B2E11B /* PostChatViewController.swift */,
+				48E3C8FF21E38EF700B2E11B /* RatingCell.swift */,
+				48E3C90021E38EF700B2E11B /* TextCell.swift */,
+				48E3C90121E38EF700B2E11B /* OptionsCell.swift */,
+				48E3C90221E38EF700B2E11B /* RatingControl.swift */,
+			);
+			path = PostChat;
+			sourceTree = "<group>";
+		};
 		A01E9F9706BBF883AD6C5273 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +125,7 @@
 		AF9862A120CFEA9B00501472 /* HistorySample */ = {
 			isa = PBXGroup;
 			children = (
+				48E3C8FD21E38EF700B2E11B /* PostChat */,
 				AF30F41A212AD63F00B0D3B9 /* LocalAccountParams */,
 				AF30F410212AC35500B0D3B9 /* Managers */,
 				AFD520D7211B1B8700B7C448 /* Item.swift */,
@@ -224,21 +247,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bold360AI/Bold360AI.framework",
 				"${BUILT_PRODUCTS_DIR}/BoldAIAccessibility/BoldAIAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/BoldAIEngine/BoldAIEngine.framework",
 				"${BUILT_PRODUCTS_DIR}/BoldCore/BoldCore.framework",
 				"${BUILT_PRODUCTS_DIR}/BoldEngine/BoldEngine.framework",
-				"${BUILT_PRODUCTS_DIR}/BoldUI/BoldUI.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bold360AI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldAIAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldAIEngine.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldEngine.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoldUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
@@ -258,10 +281,15 @@
 				48C27BCD2189EEA4000B5BF4 /* AccountViewController.swift in Sources */,
 				48C27BD12189F84F000B5BF4 /* ContextTableViewCell.swift in Sources */,
 				48E3C8FA21E36F3300B2E11B /* BoldViewController.swift in Sources */,
+				48E3C90421E38EF700B2E11B /* RatingCell.swift in Sources */,
 				AF93D213211B1AF800D8AC49 /* DBManager.swift in Sources */,
 				AF30F40F212AC34300B0D3B9 /* ReachabilityManager.swift in Sources */,
+				48E3C90321E38EF700B2E11B /* PostChatViewController.swift in Sources */,
+				48E3C90621E38EF700B2E11B /* OptionsCell.swift in Sources */,
 				AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */,
+				48E3C90721E38EF700B2E11B /* RatingControl.swift in Sources */,
 				AF9862A320CFEA9B00501472 /* AppDelegate.swift in Sources */,
+				48E3C90521E38EF700B2E11B /* TextCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

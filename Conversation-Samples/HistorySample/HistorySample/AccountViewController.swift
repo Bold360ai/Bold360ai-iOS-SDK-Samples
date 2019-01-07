@@ -8,7 +8,7 @@
 
 import UIKit
 import BoldAIEngine
-import BoldUI
+import Bold360AI
 
 class AccountViewController: UIViewController {
     
@@ -30,6 +30,7 @@ class AccountViewController: UIViewController {
     var delegate: ChatHandlerDelegate!
     var chatControllerDelegate: NRChatControllerDelegate!
     var chatHandlerProvider: ChatHandlerProvider!
+    var chatViewController: UIViewController!
     
     let reachability = Reachability()
     
@@ -69,6 +70,7 @@ class AccountViewController: UIViewController {
         self.chatHandlerProvider.didEndChat(self)
     }
     
+    
     @IBAction func presentNanorep(_ sender: UIBarButtonItem) {
         spinner.sizeToFit()
         spinner.startAnimating()
@@ -99,6 +101,25 @@ class AccountViewController: UIViewController {
         }
 //        let account = BCAccount(accessKey: "2300000001700000000:2278936004449775473:sHkdAhpSpMO/cnqzemsYUuf2iFOyPUYV")
         self.chatController = NRChatController(account: account)
+//        let viewConfig = ChatConfiguration();
+//        viewConfig.backgroundColor = UIColor.red;
+//        viewConfig.incomingBotConfig.backgroundColor = UIColor.red;
+//        self.chatController.viewConiguration = viewConfig;
+//         config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
+//         config.withNavBar = true
+//         self.chatController.delegate = self
+//         self.chatController.handOver = self
+//         self.chatController.continuityProvider = self
+//         self.chatController.uiConfiguration = config
+// //        self.chatController.historyProvider = self
+//         self.chatController.speechReconitionDelegate = self
+//         self.chatController.initialize = { controller, configuration, error in
+//             if let vc = controller {
+//                 self.navigationItem.rightBarButtonItem = sender
+//                 self.chatViewController = vc
+//                 self.navigationController?.pushViewController(vc, animated: true)
+//             }
+//         }
 //        self.chatController.viewConfiguration.chatViewConfig.backgroundColor = UIColor.lightBlue()
         self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
         self.chatController.viewConfiguration.chatViewConfig.dateStampColor = UIColor.black
@@ -213,6 +234,7 @@ extension AccountViewController: ContinuityProvider {
 
 extension AccountViewController: NRChatControllerDelegate {
     func shouldPresentChatViewController(_ viewController: UIViewController!) {
+        self.chatViewController = viewController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -284,6 +306,32 @@ extension AccountViewController: NRChatControllerDelegate {
         }
         
         return false
+    }
+    
+    func didUpdate(_ state: ChatState, with agentType: AgentType) {
+        if (agentType == AgentType.Live) {
+            if (ChatState.started == state) {
+                self.chatViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "End Chat", style: .plain, target: self, action:#selector(buttonAction))
+            } else if (ChatState.ended == state) {
+                self.chatViewController.navigationItem.rightBarButtonItem = nil
+            }
+        }
+    }
+    
+    func shouldPresent(_ form: BrandedForm!, handler completionHandler: (((UIViewController & BoldForm)?) -> Void)!) {
+        if (completionHandler != nil) {
+            if form.form?.type == BCFormTypePostChat {
+                let postVC = self.storyboard?.instantiateViewController(withIdentifier: "postChat") as! PostChatViewController
+                postVC.form = form
+                completionHandler(postVC)
+            } else {
+                completionHandler(nil)
+            }
+        }
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        self.chatController.endChat()
     }
 }
 
@@ -430,6 +478,7 @@ extension AccountViewController: SpeechReconitionDelegate {
                 })
             }
         }
+        
         alert.addAction(settingsAction)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         switch status {

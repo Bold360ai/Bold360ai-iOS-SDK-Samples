@@ -6,7 +6,7 @@
 
 import Foundation
 import RealmSwift
-import BoldUI
+import Bold360AI
 
 class DBManager {
     

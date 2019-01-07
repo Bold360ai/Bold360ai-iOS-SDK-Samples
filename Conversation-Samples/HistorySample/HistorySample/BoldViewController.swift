@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BoldUI
+import Bold360AI
 
 class BoldViewController: UIViewController {
     var chatController: NRChatController!
