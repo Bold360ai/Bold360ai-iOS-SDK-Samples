@@ -233,6 +233,7 @@ extension AccountViewController: ContinuityProvider {
 
 extension AccountViewController: NRChatControllerDelegate {
     func shouldPresentChatViewController(_ viewController: UIViewController!) {
+        self.chatViewController = viewController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
         self.navigationController?.pushViewController(viewController, animated: true)
     }
