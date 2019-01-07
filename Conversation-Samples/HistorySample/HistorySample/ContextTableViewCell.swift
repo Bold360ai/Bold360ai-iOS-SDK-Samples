@@ -1,10 +1,8 @@
-//
-//  ContextTableViewCell.swift
-//  HistorySample
-//
-//  Created by Nissim Pardo on 31/10/2018.
-//  Copyright © 2018 bold360ai. All rights reserved.
-//
+// ===================================================================================================
+// Copyright © 2018 nanorep.
+// NanorepUI SDK.
+// All rights reserved.
+// ===================================================================================================
 
 import UIKit
 

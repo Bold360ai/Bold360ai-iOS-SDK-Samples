@@ -10,6 +10,8 @@ import BoldUI
 import Realm
 
 class Item: Object, StorableChatElement {
+    var configuration: ChatElementConfiguration!
+    
     
     convenience init(item: StorableChatElement) {
         self.init()
