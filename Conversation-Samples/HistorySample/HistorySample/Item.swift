@@ -13,6 +13,7 @@ class Item: Object, StorableChatElement {
     var configuration: ChatElementConfiguration!
     
     
+    
     convenience init(item: StorableChatElement) {
         self.init()
         self.elementId = item.elementId
@@ -61,6 +62,7 @@ class Item: Object, StorableChatElement {
     dynamic var text: String!
     dynamic var source: ChatElementSource = .history
     dynamic var elementId: NSNumber = 0.0
+    dynamic var configuration: ChatElementConfiguration = ChatElementConfiguration()
     
     @objc dynamic var ID: Int = -1
 //    @objc dynamic var textString: String!

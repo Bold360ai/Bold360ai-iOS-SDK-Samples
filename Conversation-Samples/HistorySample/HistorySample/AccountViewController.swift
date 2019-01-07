@@ -1,8 +1,10 @@
-// ===================================================================================================
-// Copyright © 2016 bold360ai(LogMeIn).
-// BoldAIEngine SDK.
-// All rights reserved.
-// ===================================================================================================
+//
+//  AccountViewController.swift
+//  HistorySample
+//
+//  Created by Nissim Pardo on 31/10/2018.
+//  Copyright © 2018 bold360ai. All rights reserved.
+//
 
 import UIKit
 import BoldAIEngine
@@ -10,7 +12,7 @@ import BoldUI
 
 class AccountViewController: UIViewController {
     
-    var context = [["": ""]]
+    var context: [[String: String]]!
     var canAddContext: Bool = false
     
     @IBOutlet weak var accountName: UITextField!
@@ -21,6 +23,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var server: UITextField!
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     let spinner = UIActivityIndicatorView()
+    var presentButton: UIBarButtonItem!
     
     var chatController: NRChatController!
     
@@ -46,8 +49,13 @@ class AccountViewController: UIViewController {
                                                selector: #selector(AccountViewController.updateHeight(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillHide,
                                                object: nil)
-        
-        self.addReachabilityObserver()
+        if let accountParams = UserDefaults.standard.dictionary(forKey: "Account") as? [String: String] {
+            self.accountName.text = accountParams["accountName"]
+            self.kb.text = accountParams["kb"]
+            self.apiKey.text = accountParams["apiKey"]
+            self.server.text = accountParams["server"]
+        }
+        self.context = UserDefaults.standard.array(forKey: "Contexts") as? [[String: String]] ?? [["": ""]]
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,49 +76,72 @@ class AccountViewController: UIViewController {
         spinner.color = UIColor.lightGray
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
         let account = AccountParams()
-        account.account = "jio"//self.accountName.text
-        account.knowledgeBase = "Staging"//self.kb.text
-        
+        account.account = self.accountName.text
+        account.knowledgeBase = self.kb.text
         if (self.apiKey.text?.count)! > 0 {
             account.apiKey = self.apiKey.text
-        } else {
-//          If the APIkey is empty the app should send
-//          a space instead of empty string at the request
-            account.apiKey = " "
         }
-        
+
         if (self.server.text?.count)! > 0 {
-            account.perform(#selector(setter: AccountViewController.server), with:"qa07")//self.server.text)
+            account.perform(Selector.init("setServer:"), with:self.server.text)
         }
-        
-        
+
+        var storeAccount = [String: String]()
+        storeAccount["accountName"] = self.accountName.text
+        storeAccount["kb"] = self.kb.text
+        storeAccount["apiKey"] = self.apiKey.text
+        storeAccount["server"] = self.server.text
+        UserDefaults.standard.set(storeAccount, forKey: "Account")
+        UserDefaults.standard.set(self.context, forKey: "Contexts")
+        UserDefaults.standard.synchronize()
         var temp = [String: String]()
         self.context.forEach { (val) in
             temp[val.keys.first!] = val.values.first
         }
-        account.nanorepContext = temp
-        
-        let config: NRBotConfiguration = NRBotConfiguration()
+//        let account = BCAccount(accessKey: "2300000001700000000:2278936004449775473:sHkdAhpSpMO/cnqzemsYUuf2iFOyPUYV")
         self.chatController = NRChatController(account: account)
 //        let viewConfig = ChatConfiguration();
 //        viewConfig.backgroundColor = UIColor.red;
 //        viewConfig.incomingBotConfig.backgroundColor = UIColor.red;
 //        self.chatController.viewConiguration = viewConfig;
-        config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
-        config.withNavBar = true
+//         config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
+//         config.withNavBar = true
+//         self.chatController.delegate = self
+//         self.chatController.handOver = self
+//         self.chatController.continuityProvider = self
+//         self.chatController.uiConfiguration = config
+// //        self.chatController.historyProvider = self
+//         self.chatController.speechReconitionDelegate = self
+//         self.chatController.initialize = { controller, configuration, error in
+//             if let vc = controller {
+//                 self.navigationItem.rightBarButtonItem = sender
+//                 self.chatViewController = vc
+//                 self.navigationController?.pushViewController(vc, animated: true)
+//             }
+//         }
+//        self.chatController.viewConfiguration.chatViewConfig.backgroundColor = UIColor.lightBlue()
+        self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
+        self.chatController.viewConfiguration.chatViewConfig.dateStampColor = UIColor.black
+        self.chatController.viewConfiguration.outgoingConfig.dateStampColor = UIColor.black
+        self.chatController.viewConfiguration.incomingBotConfig.dateStampColor = UIColor.black
+//        self.chatController.viewConfiguration.outgoingConfig.avatar = UIImage(named: "icon")
+//        self.chatController.viewConfiguration.incomingBotConfig.avatar = UIImage(named: "nrIcon")
+//        self.chatController.viewConfiguration.incomingBotConfig.textColor = UIColor.blue
+//        self.chatController.viewConfiguration.incomingBotConfig.backgroundColor = UIColor.white
+//        self.chatController.viewConfiguration.outgoingConfig.backgroundColor = UIColor.purple
+//        self.chatController.viewConfiguration.quickOptionConfig.backgroundColor = UIColor.cyan;
         self.chatController.delegate = self
         self.chatController.handOver = self
         self.chatController.continuityProvider = self
-        self.chatController.uiConfiguration = config
 //        self.chatController.historyProvider = self
         self.chatController.speechReconitionDelegate = self
-        self.chatController.initialize = { controller, configuration, error in
-            if let vc = controller {
-                self.navigationItem.rightBarButtonItem = sender
-                self.chatViewController = vc
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
+        self.presentButton = sender
+//        self.chatController.initialize = { controller, configuration, error in
+//            if let vc = controller {
+//                self.navigationItem.rightBarButtonItem = sender
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
     }
     
     
@@ -134,6 +165,8 @@ class AccountViewController: UIViewController {
             self.contextTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
+    
+
 }
 
 extension AccountViewController: UITableViewDelegate {
@@ -172,6 +205,8 @@ extension AccountViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.context.count
     }
+    
+    
 }
 
 extension AccountViewController: ContextTableViewCellDelegate {
@@ -197,6 +232,15 @@ extension AccountViewController: ContinuityProvider {
 }
 
 extension AccountViewController: NRChatControllerDelegate {
+    func shouldPresentChatViewController(_ viewController: UIViewController!) {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func didFailLoadChatWithError(_ error: Error!) {
+        
+    }
+    
     
     func shouldHandleFormPresentation(_ formController: UIViewController!) -> Bool {
         return false
@@ -315,7 +359,7 @@ extension AccountViewController: ChatHandler {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.delegate.update(StatementStatus.OK, element: statement)
         }
-        let remote = RemoteChatElement(type: .IncomingLiveElement, content: "Hello from Live Agent: \(String(describing: statement?.text))")
+        let remote = RemoteChatElement(type: .IncomingBotElement, content: "Hello from Live Agent: \(String(describing: statement?.text))")
         remote?.design = ChatElementDesignCustomIncoming
         remote?.agentType = .Live
         
