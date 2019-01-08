@@ -22,9 +22,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var withWelcomeMessage: UISwitch!
     @IBOutlet weak var server: UITextField!
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
-    let spinner = UIActivityIndicatorView()
-    var presentButton: UIBarButtonItem!
-    
+    let spinner = UIActivityIndicatorView()    
     var chatController: NRChatController!
     
     var delegate: ChatHandlerDelegate!
@@ -99,32 +97,20 @@ class AccountViewController: UIViewController {
         self.context.forEach { (val) in
             temp[val.keys.first!] = val.values.first
         }
-//        let account = BCAccount(accessKey: "2300000001700000000:2278936004449775473:sHkdAhpSpMO/cnqzemsYUuf2iFOyPUYV")
         self.chatController = NRChatController(account: account)
-//        let viewConfig = ChatConfiguration();
-//        viewConfig.backgroundColor = UIColor.red;
-//        viewConfig.incomingBotConfig.backgroundColor = UIColor.red;
-//        self.chatController.viewConiguration = viewConfig;
-//         config.chatContentURL = URL(string: "https://cdn-customers.nanorep.com/v3/view-default.html")
-//         config.withNavBar = true
-//         self.chatController.delegate = self
-//         self.chatController.handOver = self
-//         self.chatController.continuityProvider = self
-//         self.chatController.uiConfiguration = config
+         self.chatController.delegate = self
+         self.chatController.handOver = self
+         self.chatController.continuityProvider = self
 // //        self.chatController.historyProvider = self
-//         self.chatController.speechReconitionDelegate = self
-//         self.chatController.initialize = { controller, configuration, error in
-//             if let vc = controller {
-//                 self.navigationItem.rightBarButtonItem = sender
-//                 self.chatViewController = vc
-//                 self.navigationController?.pushViewController(vc, animated: true)
-//             }
-//         }
+         self.chatController.speechReconitionDelegate = self
+        
+        
+        /// Example for configurations
 //        self.chatController.viewConfiguration.chatViewConfig.backgroundColor = UIColor.lightBlue()
-        self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
-        self.chatController.viewConfiguration.chatViewConfig.dateStampColor = UIColor.black
-        self.chatController.viewConfiguration.outgoingConfig.dateStampColor = UIColor.black
-        self.chatController.viewConfiguration.incomingBotConfig.dateStampColor = UIColor.black
+//        self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
+//        self.chatController.viewConfiguration.chatViewConfig.dateStampColor = UIColor.black
+//        self.chatController.viewConfiguration.outgoingConfig.dateStampColor = UIColor.black
+//        self.chatController.viewConfiguration.incomingBotConfig.dateStampColor = UIColor.black
 //        self.chatController.viewConfiguration.outgoingConfig.avatar = UIImage(named: "icon")
 //        self.chatController.viewConfiguration.incomingBotConfig.avatar = UIImage(named: "nrIcon")
 //        self.chatController.viewConfiguration.incomingBotConfig.textColor = UIColor.blue
@@ -136,13 +122,6 @@ class AccountViewController: UIViewController {
         self.chatController.continuityProvider = self
 //        self.chatController.historyProvider = self
         self.chatController.speechReconitionDelegate = self
-        self.presentButton = sender
-//        self.chatController.initialize = { controller, configuration, error in
-//            if let vc = controller {
-//                self.navigationItem.rightBarButtonItem = sender
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-//        }
     }
     
     
