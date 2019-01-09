@@ -23,10 +23,10 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var server: UITextField!
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     let spinner = UIActivityIndicatorView()    
-    var chatController: NRChatController!
+    var chatController: ChatController!
     
     var delegate: ChatHandlerDelegate!
-    var chatControllerDelegate: NRChatControllerDelegate!
+    var chatControllerDelegate: ChatControllerDelegate!
     var chatHandlerProvider: ChatHandlerProvider!
     var chatViewController: UIViewController!
     
@@ -97,7 +97,7 @@ class AccountViewController: UIViewController {
         self.context.forEach { (val) in
             temp[val.keys.first!] = val.values.first
         }
-        self.chatController = NRChatController(account: account)
+        self.chatController = ChatController(account: account)
          self.chatController.delegate = self
          self.chatController.handOver = self
          self.chatController.continuityProvider = self
@@ -211,7 +211,7 @@ extension AccountViewController: ContinuityProvider {
     }
 }
 
-extension AccountViewController: NRChatControllerDelegate {
+extension AccountViewController: ChatControllerDelegate {
     func shouldPresentChatViewController(_ viewController: UIViewController!) {
         self.chatViewController = viewController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
