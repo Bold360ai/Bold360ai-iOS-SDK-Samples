@@ -28,6 +28,16 @@ class BoldViewController: UIViewController {
     @IBAction func presentBold(_ sender: UIBarButtonItem) {
         let account = BCAccount(accessKey: self.accessKey.text)
         self.chatController = ChatController(account: account)
+        let font = CustomFont()
+        font.fontFileName = "Monotype Sabon Italic.otf"
+        font.font = UIFont(name: "MonotypeSabonW04-Italic", size: 20)
+        for family: String in UIFont.familyNames {
+            print(family)
+            for names: String in UIFont.fontNames(forFamilyName: family) {
+                print("== \(names)")
+            }
+        }
+        self.chatController.viewConfiguration.outgoingConfig.customFont = font
         self.chatController.delegate = self
     }
 

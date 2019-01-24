@@ -98,18 +98,20 @@ class AccountViewController: UIViewController {
             temp[val.keys.first!] = val.values.first
         }
         self.chatController = ChatController(account: account)
-         self.chatController.delegate = self
-         self.chatController.handOver = self
-         self.chatController.continuityProvider = self
-// //        self.chatController.historyProvider = self
-         self.chatController.speechReconitionDelegate = self
-        
         
         /// Example for configurations
 //        self.chatController.viewConfiguration.chatViewConfig.backgroundColor = UIColor.lightBlue()
 //        self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
 //        self.chatController.viewConfiguration.chatViewConfig.dateStampColor = UIColor.black
-//        self.chatController.viewConfiguration.outgoingConfig.dateStampColor = UIColor.black
+        let font = CustomFont()
+        font.fontFileName = "waltographUI.ttf"
+        font.font = UIFont(name: "WaltographUI-Bold", size: 15)
+        let font1 = CustomFont()
+        font1.fontFileName = "Monotype Sabon Italic.otf"
+        font1.font = UIFont(name: "MonotypeSabonW04-Italic", size: 20)
+        self.chatController.viewConfiguration.outgoingConfig.customFont = font
+        self.chatController.viewConfiguration.incomingBotConfig.customFont = font1
+        self.chatController.viewConfiguration.incomingLiveConfig.customFont = font
 //        self.chatController.viewConfiguration.incomingBotConfig.dateStampColor = UIColor.black
 //        self.chatController.viewConfiguration.outgoingConfig.avatar = UIImage(named: "icon")
 //        self.chatController.viewConfiguration.incomingBotConfig.avatar = UIImage(named: "nrIcon")
