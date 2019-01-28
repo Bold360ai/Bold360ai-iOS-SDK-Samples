@@ -52,17 +52,16 @@ class Item: Object, StorableChatElement {
 //        super.init(value: value, schema: schema)
 //    }
     
-    dynamic var timestamp: Date!
-    dynamic var storageKey: String!
-    dynamic var statementScope: StatementScope = .Bot
-    dynamic var status: StatementStatus = .Pending
-    dynamic var type: ChatElementType = .OutgoingElement
-    dynamic var text: String!
-    dynamic var source: ChatElementSource = .history
-    dynamic var elementId: NSNumber = 0.0
-    dynamic var removable: Bool = false
+    @objc dynamic var timestamp: Date!
+    @objc dynamic var storageKey: String!
+    @objc dynamic var statementScope: StatementScope = .Bot
+    @objc dynamic var status: StatementStatus = .Pending
+    @objc dynamic var type: ChatElementType = .OutgoingElement
+    @objc dynamic var text: String!
+    @objc dynamic var source: ChatElementSource = .history
+    @objc dynamic var elementId: NSNumber = 0.0
+    @objc dynamic var removable: Bool = false
     @objc dynamic var configuration: ChatElementConfiguration = ChatElementConfiguration()
-    dynamic var removable: Bool = false
     @objc dynamic var ID: Int = -1
 //    @objc dynamic var textString: String!
     
