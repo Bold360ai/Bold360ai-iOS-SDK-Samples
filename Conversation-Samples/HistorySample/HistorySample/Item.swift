@@ -60,6 +60,7 @@ class Item: Object, StorableChatElement {
     dynamic var text: String!
     dynamic var source: ChatElementSource = .history
     dynamic var elementId: NSNumber = 0.0
+    dynamic var removable: Bool = false
     @objc dynamic var configuration: ChatElementConfiguration = ChatElementConfiguration()
     dynamic var removable: Bool = false
     @objc dynamic var ID: Int = -1
