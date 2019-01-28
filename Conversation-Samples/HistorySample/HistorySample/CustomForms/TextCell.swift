@@ -8,6 +8,4 @@ import UIKit
 
 class TextCell: UITableViewCell {
     @IBOutlet weak var txtField: UITextField!
-    
-    
 }
