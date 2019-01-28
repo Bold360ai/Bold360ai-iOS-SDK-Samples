@@ -10,21 +10,23 @@ import Bold360AI
 import Realm
 
 class Item: Object, StorableChatElement {
+    
     convenience init(item: StorableChatElement) {
         self.init()
         self.elementId = item.elementId
         self.storageKey = item.storageKey
-        self.agentType = item.agentType
+        self.statementScope = item.statementScope
         self.status = item.status
         self.timestamp = item.timestamp
         self.text = item.text
         self.source = item.source
         self.elementId = item.elementId
         self.ID = item.elementId.intValue
+        self.removable = item.removable
     }
 
 //    required init() {
-//        self.agentType = .None
+//        self.statementScope = .None
 //        self.status = .Pending
 //        self.type = .LocalElement
 //        self.source = .history
@@ -34,7 +36,7 @@ class Item: Object, StorableChatElement {
 //
 //    required init(realm: RLMRealm, schema: RLMObjectSchema) {
 //        print("init(realm:schema:) has not been implemented")
-//        self.agentType = .None
+//        self.statementScope = .None
 //        self.status = .Error
 //        self.type = .LocalElement
 //        self.source = .history
@@ -43,7 +45,7 @@ class Item: Object, StorableChatElement {
 //
 //    required init(value: Any, schema: RLMSchema) {
 //        print("init(value:schema:) has not been implemented")
-//        self.agentType = .None
+//        self.statementScope = .None
 //        self.status = .Error
 //        self.type = .LocalElement
 //        self.source = .history
@@ -52,7 +54,7 @@ class Item: Object, StorableChatElement {
     
     dynamic var timestamp: Date!
     dynamic var storageKey: String!
-    dynamic var agentType: AgentType = .Bot
+    dynamic var statementScope: StatementScope = .Bot
     dynamic var status: StatementStatus = .Pending
     dynamic var type: ChatElementType = .OutgoingElement
     dynamic var text: String!
@@ -60,7 +62,7 @@ class Item: Object, StorableChatElement {
     dynamic var elementId: NSNumber = 0.0
     dynamic var removable: Bool = false
     @objc dynamic var configuration: ChatElementConfiguration = ChatElementConfiguration()
-    
+    dynamic var removable: Bool = false
     @objc dynamic var ID: Int = -1
 //    @objc dynamic var textString: String!
     

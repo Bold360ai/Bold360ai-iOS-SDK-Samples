@@ -289,9 +289,9 @@ extension AccountViewController: ChatControllerDelegate {
         return false
     }
     
-    func didUpdate(_ state: ChatState, with agentType: AgentType) {
-        if (agentType == AgentType.Live) {
-            if (ChatState.started == state) {
+    func didUpdate(_ state: ChatState, with statementScope: StatementScope) {
+        if (statementScope == StatementScope.Live) {
+            if (ChatState.preparing == state) {
                 self.chatViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "End Chat", style: .plain, target: self, action:#selector(buttonAction))
             } else if (ChatState.ended == state) {
                 self.chatViewController.navigationItem.rightBarButtonItem = nil
@@ -305,6 +305,10 @@ extension AccountViewController: ChatControllerDelegate {
                 let postVC = self.storyboard?.instantiateViewController(withIdentifier: "postChat") as! PostChatViewController
                 postVC.form = form
                 completionHandler(postVC)
+            } else if (form.form?.type == BCFormTypeUnavailable) {
+                let unavailableVC = self.storyboard?.instantiateViewController(withIdentifier: "unavailable") as! UnavailableViewController
+                unavailableVC.form = form
+                completionHandler(unavailableVC)
             } else {
                 completionHandler(nil)
             }
@@ -344,7 +348,7 @@ extension AccountViewController: ChatHandler {
         }
         let remote = RemoteChatElement(type: .IncomingBotElement, content: "Hello from Live Agent: \(String(describing: statement?.text))")
         remote?.design = ChatElementDesignCustomIncoming
-        remote?.agentType = .Live
+        remote?.statementScope = .Live
         
         // Random delay value for tests
         let random = Double(arc4random_uniform(9) + 1)

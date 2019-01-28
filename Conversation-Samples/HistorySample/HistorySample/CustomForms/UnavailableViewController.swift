@@ -7,18 +7,26 @@
 import UIKit
 import Bold360AI
 
-class PostChatViewController: UITableViewController {
+class UnavailableViewController: UITableViewController {
     @IBOutlet var formTitle: UILabel!
     @IBOutlet weak var startBtn: UIButton!
     
     @IBAction func startTapped(_ sender: Any) {
+        
+        var x = 0
+        let index = IndexPath(row: x, section: 0)
+        
+        
+        for infoField in (formInfo.form?.formFields)! {
+            (infoField as! BCFormField).value = (self.tableView.cellForRow(at: index) as! TextCell).txtField.text
+            x += 1
+        }
         self.delegate.submitForm(formInfo)
     }
     
     override func viewDidLoad() {
-        self.formTitle.text = self.formInfo.globalBranding["api#postchat#intro"] as? String
-        self.startBtn.setTitle(self.formInfo.globalBranding["api#postchat#done"] as? String, for: .normal)
-        self.startBtn.setTitle(self.formInfo.globalBranding["api#postchat#done"] as? String, for: .focused)
+        self.formTitle.text = "Sorry, we can’t chat right now. Please send an email using the form below."
+        self.startBtn.setTitle("Send", for: .normal)
     }
     
     var formInfo: BrandedForm!
@@ -27,7 +35,7 @@ class PostChatViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -38,21 +46,10 @@ class PostChatViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let field = formInfo.form?.formFields[indexPath.row] as? BCFormField {
-            if field.type == BCFormFieldTypeEmail {
+            if field.type == BCFormFieldTypeEmail || field.type == BCFormFieldTypeText {
                 let cell: TextCell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextCell
                 cell.txtField.placeholder = field.label
-                return cell
-            } else if field.type == BCFormFieldTypeRadio {
-                let cell: OptionsCell = tableView.dequeueReusableCell(withIdentifier: "OptionsCell", for: indexPath) as! OptionsCell
-                cell.optionsBtn.setTitle(field.label, for: .normal)
-                cell.optionsBtn.setTitle(field.label, for: .focused)
-                cell.fillOptions(field: field) { (vc) in
-                    self.present(vc, animated: true, completion: nil)
-                }
-                return cell
-            } else {
-                let cell: RatingCell = tableView.dequeueReusableCell(withIdentifier: "RatingCell", for: indexPath) as! RatingCell
-                cell.ratingTitle.text = field.label
+
                 return cell
             }
         }
@@ -61,7 +58,7 @@ class PostChatViewController: UITableViewController {
     }
 }
 
-extension PostChatViewController: BoldForm {
+extension UnavailableViewController: BoldForm {
     var form: BrandedForm! {
         get {
             return formInfo
@@ -79,6 +76,4 @@ extension PostChatViewController: BoldForm {
             formDelegate = delegate
         }
     }
-    
-    
 }
