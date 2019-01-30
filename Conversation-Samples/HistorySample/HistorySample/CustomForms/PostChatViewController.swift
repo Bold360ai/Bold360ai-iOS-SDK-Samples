@@ -10,8 +10,10 @@ import Bold360AI
 class PostChatViewController: UITableViewController {
     @IBOutlet var formTitle: UILabel!
     @IBOutlet weak var startBtn: UIButton!
+    var isSubmitted = false
     
     @IBAction func startTapped(_ sender: Any) {
+        isSubmitted = true
         self.delegate.submitForm(formInfo)
     }
     
@@ -23,7 +25,7 @@ class PostChatViewController: UITableViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        if (self.isBeingDismissed) {
+        if (!isSubmitted) {
             if (self.delegate != nil) {
                 self.delegate.didDismissForm(self)
             }

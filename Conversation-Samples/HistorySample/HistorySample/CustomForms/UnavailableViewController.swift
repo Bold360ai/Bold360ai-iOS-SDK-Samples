@@ -11,8 +11,9 @@ class UnavailableViewController: UITableViewController {
     @IBOutlet var formTitle: UILabel!
     @IBOutlet weak var startBtn: UIButton!
     
+    var isSubmitted = false
     @IBAction func startTapped(_ sender: Any) {
-        
+        isSubmitted = true
         var x = 0
         let index = IndexPath(row: x, section: 0)
         
@@ -58,10 +59,8 @@ class UnavailableViewController: UITableViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        if (self.isBeingDismissed) {
-            if (self.delegate != nil) {
-                self.delegate.didDismissForm(self)
-            }
+        if (self.delegate != nil && !isSubmitted) {
+            self.delegate.didDismissForm(self)
         }
         super.viewDidDisappear(animated)
     }
