@@ -123,6 +123,7 @@ class AccountViewController: UIViewController {
         self.chatController.handOver = self
         self.chatController.continuityProvider = self
 //        self.chatController.historyProvider = self
+        NanoRep.shared().chatDelegate = self
         self.chatController.speechReconitionDelegate = self
     }
     
@@ -149,6 +150,22 @@ class AccountViewController: UIViewController {
     }
     
 
+}
+
+extension AccountViewController: NRChatEngineDelegate {
+    func didFetchConvesationId(_ conversationId: NSNumber!) {
+        
+    }
+    
+    func shouldHandleMissingEntities(_ response: NRConversationalResponse!, missingEntitiesHandler handler: ((NRConversationMissingEntity?) -> Void)!) {
+        
+    }
+    
+    func shouldHandlePersonalInformation(_ personalInfo: NRPersonalInfo!) {
+        personalInfo.personalInfoCallback!("works", nil)
+    }
+    
+    
 }
 
 extension AccountViewController: UITableViewDelegate {
