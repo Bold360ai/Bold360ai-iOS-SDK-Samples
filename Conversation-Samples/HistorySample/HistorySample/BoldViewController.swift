@@ -98,13 +98,28 @@ extension BoldViewController: ChatControllerDelegate {
         return true
     }
     
-    func didUpdate(_ state: ChatState, with statementScope: StatementScope) {
-        if (statementScope == StatementScope.Live) {
-            if (ChatState.preparing == state) {
+    func didUpdateState(_ event: ChatStateEvent!) {
+        if (event.scope == StatementScope.Live) {
+            if (ChatState.preparing == event.state) {
                 self.chatViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "End Chat", style: .plain, target: self, action:#selector(buttonAction))
-            } else if (ChatState.ended == state) {
+            } else if (ChatState.ended == event.state) {
                 self.chatViewController.navigationItem.rightBarButtonItem = nil
             }
+        }
+        
+        switch event.state {
+        case .preparing:
+            print("ChatPreparing")
+        case .started:
+            print("ChatStarted")
+        case .accepted:
+            print("ChatAccepted")
+        case .ending:
+            print("ChatEnding")
+        case .ended:
+            print("ChatEnded")
+        case .unavailable:
+            print("ChatUnavailable")
         }
     }
     

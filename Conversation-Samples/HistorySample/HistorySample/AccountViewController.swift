@@ -98,7 +98,7 @@ class AccountViewController: UIViewController {
             temp[val.keys.first!] = val.values.first
         }
         self.chatController = ChatController(account: account)
-        
+        self.chatController.delegate = self
         /// Example for configurations
 //        self.chatController.viewConfiguration.chatViewConfig.backgroundColor = UIColor.lightBlue()
 //        self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
@@ -119,7 +119,7 @@ class AccountViewController: UIViewController {
 //        self.chatController.viewConfiguration.incomingBotConfig.backgroundColor = UIColor.white
 //        self.chatController.viewConfiguration.outgoingConfig.backgroundColor = UIColor.purple
 //        self.chatController.viewConfiguration.quickOptionConfig.backgroundColor = UIColor.cyan;
-        self.chatController.delegate = self
+
         self.chatController.handOver = self
         self.chatController.continuityProvider = self
 //        self.chatController.historyProvider = self
@@ -289,13 +289,28 @@ extension AccountViewController: ChatControllerDelegate {
         return false
     }
     
-    func didUpdate(_ state: ChatState, with statementScope: StatementScope) {
-        if (statementScope == StatementScope.Live) {
-            if (ChatState.preparing == state) {
+    func didUpdateState(_ event: ChatStateEvent!) {
+        if (event.scope == StatementScope.Live) {
+            if (ChatState.preparing == event.state) {
                 self.chatViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "End Chat", style: .plain, target: self, action:#selector(buttonAction))
-            } else if (ChatState.ended == state) {
+            } else if (ChatState.ended == event.state) {
                 self.chatViewController.navigationItem.rightBarButtonItem = nil
             }
+        }
+        
+        switch event.state {
+        case .preparing:
+            print("ChatPreparing")
+        case .started:
+            print("ChatStarted")
+        case .accepted:
+            print("ChatAccepted")
+        case .ending:
+            print("ChatEnding")
+        case .ended:
+            print("ChatEnded")
+        case .unavailable:
+            print("ChatUnavailable")
         }
     }
     
