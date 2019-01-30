@@ -124,6 +124,11 @@ extension BoldViewController: ChatControllerDelegate {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        self.chatController.endChat()
+        super.viewDidDisappear(animated)
+    }
+    
     @objc func buttonAction(sender: UIButton!) {
         self.chatController.endChat()
     }

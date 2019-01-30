@@ -19,6 +19,16 @@ class PostChatViewController: UITableViewController {
         self.formTitle.text = self.formInfo.globalBranding["api#postchat#intro"] as? String
         self.startBtn.setTitle(self.formInfo.globalBranding["api#postchat#done"] as? String, for: .normal)
         self.startBtn.setTitle(self.formInfo.globalBranding["api#postchat#done"] as? String, for: .focused)
+        super.viewDidLoad()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if (self.isBeingDismissed) {
+            if (self.delegate != nil) {
+                self.delegate.didDismissForm(self)
+            }
+        }
+        super.viewDidDisappear(animated)
     }
     
     var formInfo: BrandedForm!

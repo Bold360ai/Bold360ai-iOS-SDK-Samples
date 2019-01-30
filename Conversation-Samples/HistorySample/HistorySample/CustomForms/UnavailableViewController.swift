@@ -56,6 +56,15 @@ class UnavailableViewController: UITableViewController {
         
         return UITableViewCell()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if (self.isBeingDismissed) {
+            if (self.delegate != nil) {
+                self.delegate.didDismissForm(self)
+            }
+        }
+        super.viewDidDisappear(animated)
+    }
 }
 
 extension UnavailableViewController: BoldForm {
