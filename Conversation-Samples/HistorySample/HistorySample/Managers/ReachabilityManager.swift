@@ -30,7 +30,7 @@ class Reachability {
     /// Indicates if notifier is active and listening to network changes.
     fileprivate var notifierRunning = false
     /// Reachability events dispatch queue, used to handle events one by one serially.
-    fileprivate let reachabilityQueue = DispatchQueue(label: "com.kaltura.playkit.reachability")
+    fileprivate let reachabilityQueue = DispatchQueue(label: "com.bold.reachability")
     fileprivate var previousFlags: SCNetworkReachabilityFlags?
     var reachableOnWWAN: Bool
     

@@ -23,6 +23,7 @@ class Item: Object, StorableChatElement {
         self.elementId = item.elementId
         self.ID = item.elementId.intValue
         self.removable = item.removable
+        self.configuration = item.configuration
     }
 
 //    required init() {
@@ -61,7 +62,7 @@ class Item: Object, StorableChatElement {
     @objc dynamic var source: ChatElementSource = .history
     @objc dynamic var elementId: NSNumber = 0.0
     @objc dynamic var removable: Bool = false
-    @objc dynamic var configuration: ChatElementConfiguration = ChatElementConfiguration()
+    @objc dynamic var configuration: ChatElementConfiguration?
     @objc dynamic var ID: Int = -1
 //    @objc dynamic var textString: String!
     

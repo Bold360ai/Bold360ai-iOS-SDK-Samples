@@ -24,6 +24,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     let spinner = UIActivityIndicatorView()    
     var chatController: ChatController!
+    @IBOutlet weak var startBtn: UIBarButtonItem!
     
     var delegate: ChatHandlerDelegate!
     var chatControllerDelegate: ChatControllerDelegate!
@@ -47,6 +48,9 @@ class AccountViewController: UIViewController {
                                                selector: #selector(AccountViewController.updateHeight(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillHide,
                                                object: nil)
+        
+        self.addReachabilityObserver()
+        
         if let accountParams = UserDefaults.standard.dictionary(forKey: "Account") as? [String: String] {
             self.accountName.text = accountParams["accountName"]
             self.kb.text = accountParams["kb"]
@@ -70,6 +74,11 @@ class AccountViewController: UIViewController {
     
     
     @IBAction func presentNanorep(_ sender: UIBarButtonItem) {
+        if !(self.reachability?.isReachable)! {
+            self.presentNetorkPopup()
+            return
+        }
+        
         spinner.sizeToFit()
         spinner.startAnimating()
         spinner.color = UIColor.lightGray
@@ -100,9 +109,9 @@ class AccountViewController: UIViewController {
         self.chatController = ChatController(account: account)
         self.chatController.delegate = self
         /// Example for configurations
-//        self.chatController.viewConfiguration.chatViewConfig.backgroundColor = UIColor.lightBlue()
-//        self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
-//        self.chatController.viewConfiguration.chatViewConfig.dateStampColor = UIColor.black
+
+        self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
+        self.chatController.viewConfiguration.chatViewConfig.dateStampColor = UIColor.black
         let font = CustomFont()
         font.fontFileName = "waltographUI.ttf"
         font.font = UIFont(name: "WaltographUI-Bold", size: 15)
@@ -148,8 +157,6 @@ class AccountViewController: UIViewController {
             self.contextTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
-    
-
 }
 
 extension AccountViewController: NRChatEngineDelegate {
@@ -250,11 +257,18 @@ extension AccountViewController: ChatControllerDelegate {
         guard let _ = statement else {
             return
         }
-        print("error: \(error)")
-        print("statement:: status \(statement.status.rawValue)")
+        
+        guard let _ = error  else {
+            print("error: \(error)")
+            print("statement:: status \(statement.status.rawValue)")
+            return
+        }
+        
         DispatchQueue.main.async {
-            let element = Item(item: statement)
-            DBManager.sharedInstance.addData(object: element)
+            if (self.reachability?.isReachable)! {
+                let element = Item(item: statement)
+                DBManager.sharedInstance.addData(object: element)
+            }
         }
     }
     
@@ -406,30 +420,51 @@ extension AccountViewController {
         guard let reachability = self.reachability else { return }
         reachability.startNotifier()
         
-        reachability.onUnreachable = { reachability in
+        reachability.onUnreachable = { [unowned self] reachability in
             print("Warning: network unreachable")
+            self.presentNetorkPopup()
         }
         reachability.onReachable = { [unowned self] reachability in
             print("Warning: network reachable")
             
             DispatchQueue.main.async {
-                if let history = DBManager.sharedInstance.getDataFromDB() {
-                    var elements = [StorableChatElement]()
-                    
-                    for item in history {
-                        print("addReachabilityObserver:: status\(item.status.rawValue)")
-                        if (item.status.rawValue == StatementStatus.Error.rawValue) {
-                            print("item.status: \(item.status)")
-                            print("item.elementId: \(item.ID)")
-                            elements.append(item)
-                        }
-                    }
-                    
-                    if elements.count > 0 {
-                        self.chatController?.repostStatements(elements)
-                    }
-                }
+//                if let history = DBManager.sharedInstance.getDataFromDB() {
+//                    var elements = [StorableChatElement]()
+//
+//                    for item in history {
+//                        print("addReachabilityObserver:: status\(item.status.rawValue)")
+//                        if (item.status.rawValue == StatementStatus.Error.rawValue) {
+//                            print("item.status: \(item.status)")
+//                            print("item.elementId: \(item.ID)")
+//                            elements.append(item)
+//                        }
+//                    }
+//
+//                    if elements.count > 0 {
+//                        self.chatController?.repostStatements(elements)
+//                    }
+//                }
             }
+        }
+    }
+    
+    private func presentNetorkPopup() {
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel) { (action) in
+                                            // Respond to user selection of the action
+        }
+        
+        let alert = UIAlertController(title: "network unreachable",
+                                      message: "connect to network and reload the app",
+                                      preferredStyle: .actionSheet)
+        alert.addAction(cancelAction)
+        
+        // On iPad, action sheets must be presented from a popover.
+        alert.popoverPresentationController?.barButtonItem =
+            self.startBtn
+        
+        self.present(alert, animated: true) {
+            // The alert was presented
         }
     }
     
