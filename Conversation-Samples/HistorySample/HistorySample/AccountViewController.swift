@@ -178,11 +178,15 @@ extension AccountViewController: NRChatEngineDelegate {
 extension AccountViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.size.width, height: 44)))
-        view.backgroundColor = UIColor.lightGray
-        let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.size.width, height: 44)))
+        view.backgroundColor = UIColor.white
+        let button = UIButton(frame: CGRect(origin: CGPoint(x: 20, y: 7), size: CGSize(width: 120, height: 37)))
+        let textColor = UIColor(red: 74 / 255.0, green: 74 / 255.0, blue: 74 / 255.0, alpha: 1)
         button.setTitle("Add Context", for: .normal)
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = textColor.cgColor
         view.addSubview(button)
-        button.setTitleColor(UIColor.red, for: .normal)
+        button.setTitleColor(textColor, for: .normal)
         button.addTarget(self, action: #selector(AccountViewController.addContext), for: .touchUpInside)
         return view
     }

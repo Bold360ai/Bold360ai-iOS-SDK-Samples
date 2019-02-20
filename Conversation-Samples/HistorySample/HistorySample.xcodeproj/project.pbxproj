@@ -10,6 +10,7 @@
 		2E9E0AE486F3F82339EA85AA /* Pods_HistorySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384EB0E285F7F9DF6C38C88B /* Pods_HistorySample.framework */; };
 		4836E07721F8A116004610FE /* waltographUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4836E07621F8A115004610FE /* waltographUI.ttf */; };
 		4836E07B21F8D8DD004610FE /* Monotype Sabon Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4836E07A21F8D8D8004610FE /* Monotype Sabon Italic.otf */; };
+		4837107A221D69B400DD3A6D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48371079221D69B400DD3A6D /* IntroViewController.swift */; };
 		48C27BCD2189EEA4000B5BF4 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C27BCC2189EEA4000B5BF4 /* AccountViewController.swift */; };
 		48C27BD12189F84F000B5BF4 /* ContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */; };
 		48E3C8FA21E36F3300B2E11B /* BoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C8F921E36F3300B2E11B /* BoldViewController.swift */; };
@@ -34,6 +35,7 @@
 		384EB0E285F7F9DF6C38C88B /* Pods_HistorySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistorySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4836E07621F8A115004610FE /* waltographUI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = waltographUI.ttf; sourceTree = "<group>"; };
 		4836E07A21F8D8D8004610FE /* Monotype Sabon Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monotype Sabon Italic.otf"; sourceTree = "<group>"; };
+		48371079221D69B400DD3A6D /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		48C27BCC2189EEA4000B5BF4 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextTableViewCell.swift; sourceTree = "<group>"; };
 		48E3C8F921E36F3300B2E11B /* BoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				AF9862AB20CFEA9B00501472 /* LaunchScreen.storyboard */,
 				AF9862AE20CFEA9B00501472 /* Info.plist */,
 				48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */,
+				48371079221D69B400DD3A6D /* IntroViewController.swift */,
 			);
 			path = HistorySample;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4837107A221D69B400DD3A6D /* IntroViewController.swift in Sources */,
 				AFD520D8211B1B8700B7C448 /* Item.swift in Sources */,
 				48C27BCD2189EEA4000B5BF4 /* AccountViewController.swift in Sources */,
 				48C27BD12189F84F000B5BF4 /* ContextTableViewCell.swift in Sources */,

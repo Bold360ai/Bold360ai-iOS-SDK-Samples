@@ -140,7 +140,7 @@ extension BoldViewController: ChatControllerDelegate {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.chatController.endChat()
+        self.chatController?.endChat()
         super.viewDidDisappear(animated)
     }
     
