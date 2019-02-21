@@ -26,6 +26,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aam-yL-Nl4" id="Bo2-MD-Ue1"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Knowledgebase" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fV-jk-jvv">
                                 <rect key="frame" x="16" y="145" width="343" height="44"/>
@@ -46,7 +49,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="tGD-eS-DgJ">
-                                <rect key="frame" x="0.0" y="356" width="375" height="311"/>
+                                <rect key="frame" x="0.0" y="356" width="375" height="220"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="n9i-hv-Ip8" customClass="ContextTableViewCell" customModule="HistorySample" customModuleProvider="target">
@@ -57,7 +60,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Context Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EST-nQ-Ktv">
-                                                    <rect key="frame" x="194" y="0.0" width="166" height="44"/>
+                                                    <rect key="frame" x="194" y="5.5" width="166" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="w3h-Qi-EDC"/>
                                                     </constraints>
@@ -69,7 +72,7 @@
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Context Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WWd-dI-Q9D">
-                                                    <rect key="frame" x="15" y="0.0" width="166" height="44"/>
+                                                    <rect key="frame" x="15" y="5.5" width="166" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="1vN-Lr-2Xz"/>
                                                     </constraints>
@@ -125,20 +128,33 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYp-La-nV7">
                                 <rect key="frame" x="310" y="315" width="51" height="31"/>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wR-eh-cQf" customClass="OptionButton" customModule="HistorySample" customModuleProvider="target">
+                                <rect key="frame" x="16" y="600" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4bM-L9-YCQ"/>
+                                </constraints>
+                                <state key="normal" title="START CHAT">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentNanorep:" destination="aam-yL-Nl4" eventType="touchUpInside" id="Ofb-Gh-xFR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7C9-NN-RXD" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="3tn-E1-gD1"/>
-                            <constraint firstItem="F2c-6E-Wr6" firstAttribute="bottom" secondItem="tGD-eS-DgJ" secondAttribute="bottom" id="4eG-0e-Pfs"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="tGD-eS-DgJ" secondAttribute="trailing" id="5H4-qq-I5N"/>
                             <constraint firstItem="gsY-fL-gVy" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="5bK-gV-bm5"/>
                             <constraint firstItem="7C9-NN-RXD" firstAttribute="top" secondItem="2fV-jk-jvv" secondAttribute="bottom" constant="8" id="732-2v-lg0"/>
                             <constraint firstItem="m3x-NT-Uuh" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="E3o-bA-eWo"/>
+                            <constraint firstItem="3wR-eh-cQf" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="PvV-Zb-2i4"/>
                             <constraint firstItem="2fV-jk-jvv" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="Rf9-LV-TbF"/>
                             <constraint firstItem="gsY-fL-gVy" firstAttribute="top" secondItem="F2c-6E-Wr6" secondAttribute="top" constant="29" id="UVV-WO-fR3"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="7C9-NN-RXD" secondAttribute="trailing" constant="16" id="UmV-zj-pNK"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="2fV-jk-jvv" secondAttribute="trailing" constant="16" id="VPE-ty-3MK"/>
                             <constraint firstItem="tGD-eS-DgJ" firstAttribute="top" secondItem="Y3p-Ni-Anx" secondAttribute="bottom" constant="16" id="Y6t-La-7gY"/>
+                            <constraint firstItem="3wR-eh-cQf" firstAttribute="top" secondItem="tGD-eS-DgJ" secondAttribute="bottom" constant="24" id="bzL-8a-Wdr"/>
                             <constraint firstItem="m3x-NT-Uuh" firstAttribute="top" secondItem="7C9-NN-RXD" secondAttribute="bottom" constant="8" id="fBp-x4-xIR"/>
                             <constraint firstItem="tGD-eS-DgJ" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" id="m8W-Zc-e40"/>
                             <constraint firstItem="Y3p-Ni-Anx" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="mV0-A5-CjV"/>
@@ -147,6 +163,8 @@
                             <constraint firstItem="2fV-jk-jvv" firstAttribute="top" secondItem="gsY-fL-gVy" secondAttribute="bottom" constant="8" id="pR0-At-UaL"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="m3x-NT-Uuh" secondAttribute="trailing" constant="16" id="pm2-Jh-dOe"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="gsY-fL-gVy" secondAttribute="trailing" constant="16" id="rhD-MP-vnc"/>
+                            <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="3wR-eh-cQf" secondAttribute="trailing" constant="16" id="sft-eY-W8B"/>
+                            <constraint firstItem="F2c-6E-Wr6" firstAttribute="bottom" secondItem="3wR-eh-cQf" secondAttribute="bottom" constant="27" id="t5q-XG-ixi"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="uYp-La-nV7" secondAttribute="trailing" constant="16" id="yUN-ql-6bt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F2c-6E-Wr6"/>
@@ -163,8 +181,9 @@
                         <outlet property="apiKey" destination="7C9-NN-RXD" id="ucM-bk-Exk"/>
                         <outlet property="contextTableView" destination="tGD-eS-DgJ" id="yGh-uU-Xxc"/>
                         <outlet property="kb" destination="2fV-jk-jvv" id="71c-EJ-mRj"/>
-                        <outlet property="keyboardConstraint" destination="4eG-0e-Pfs" id="Jwa-UY-vDY"/>
+                        <outlet property="keyboardConstraint" destination="t5q-XG-ixi" id="vEU-vp-aic"/>
                         <outlet property="server" destination="m3x-NT-Uuh" id="9cT-tI-NGJ"/>
+                        <outlet property="submitButton" destination="3wR-eh-cQf" id="Usu-AE-Myt"/>
                         <outlet property="withWelcomeMessage" destination="uYp-La-nV7" id="qrG-7g-BUE"/>
                     </connections>
                 </viewController>
@@ -195,7 +214,7 @@
         <!--bold360ai-->
         <scene sceneID="8r5-vF-5jq">
             <objects>
-                <viewController id="dwj-tF-uDc" customClass="IntroViewController" customModule="HistorySample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dwj-tF-uDc" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GH6-zg-1ed">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,7 +222,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogd-J3-DN5">
                                 <rect key="frame" x="67.5" y="301.5" width="240" height="128"/>
                                 <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vG0-Xb-tEw">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vG0-Xb-tEw" customClass="OptionButton" customModule="HistorySample" customModuleProvider="target">
                                         <rect key="frame" x="50" y="23" width="140" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="8LG-mV-cdA"/>
@@ -215,10 +234,10 @@
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="presentOption:" destination="dwj-tF-uDc" eventType="touchUpInside" id="kJa-B5-t2G"/>
+                                            <segue destination="aam-yL-Nl4" kind="show" id="8sI-Fm-CVo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S73-Tf-xaf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S73-Tf-xaf" customClass="OptionButton" customModule="HistorySample" customModuleProvider="target">
                                         <rect key="frame" x="50" y="77" width="140" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="zbz-DX-tYs"/>
@@ -227,7 +246,7 @@
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="presentOption:" destination="dwj-tF-uDc" eventType="touchUpInside" id="83y-7Z-nAy"/>
+                                            <segue destination="Yka-kg-JLd" kind="show" id="XOq-5S-9z6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -250,12 +269,6 @@
                         <viewLayoutGuide key="safeArea" id="YUo-FR-djQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="bold360ai" id="LtR-gb-ZyV"/>
-                    <connections>
-                        <outlet property="boldButton" destination="S73-Tf-xaf" id="X4N-q2-I0P"/>
-                        <outlet property="botButton" destination="vG0-Xb-tEw" id="aDA-1d-Sjl"/>
-                        <segue destination="aam-yL-Nl4" kind="show" identifier="BOT CHAT" id="oYo-gY-zr7"/>
-                        <segue destination="Yka-kg-JLd" kind="show" identifier="BOLD CHAT" id="xdT-BQ-NRx"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uve-EN-ddP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
