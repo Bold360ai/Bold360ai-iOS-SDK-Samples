@@ -169,13 +169,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F2c-6E-Wr6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Bot Chat" id="Jw4-7s-0xg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="s54-GP-Jis">
-                            <connections>
-                                <action selector="presentNanorep:" destination="aam-yL-Nl4" id="sBC-sR-Oss"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Bot Chat" id="Jw4-7s-0xg"/>
                     <connections>
                         <outlet property="accountName" destination="gsY-fL-gVy" id="5uJ-iZ-RBz"/>
                         <outlet property="apiKey" destination="7C9-NN-RXD" id="ucM-bk-Exk"/>
@@ -291,22 +285,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaK-Nd-gje" customClass="OptionButton" customModule="HistorySample" customModuleProvider="target">
+                                <rect key="frame" x="16" y="600" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="F0u-n3-E1g"/>
+                                </constraints>
+                                <state key="normal" title="START CHAT"/>
+                                <connections>
+                                    <action selector="presentBold:" destination="Yka-kg-JLd" eventType="touchUpInside" id="iW0-Go-oSj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Rst-gm-ZlS" firstAttribute="trailing" secondItem="QaK-Nd-gje" secondAttribute="trailing" constant="16" id="1SP-U1-Qgd"/>
+                            <constraint firstItem="Rst-gm-ZlS" firstAttribute="bottom" secondItem="QaK-Nd-gje" secondAttribute="bottom" constant="27" id="4Fs-6F-8Mq"/>
                             <constraint firstItem="Rst-gm-ZlS" firstAttribute="trailing" secondItem="BgO-tB-aap" secondAttribute="trailing" constant="16" id="C9v-qo-m8i"/>
                             <constraint firstItem="BgO-tB-aap" firstAttribute="leading" secondItem="Rst-gm-ZlS" secondAttribute="leading" constant="16" id="Ln1-EE-mwD"/>
+                            <constraint firstItem="QaK-Nd-gje" firstAttribute="leading" secondItem="Rst-gm-ZlS" secondAttribute="leading" constant="16" id="bNW-Vp-Ufd"/>
                             <constraint firstItem="BgO-tB-aap" firstAttribute="top" secondItem="Rst-gm-ZlS" secondAttribute="top" constant="53" id="cTP-mX-4oV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rst-gm-ZlS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Live Chat" id="Bai-bC-DdR">
-                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="g1a-SM-vAA">
-                            <connections>
-                                <action selector="presentBold:" destination="Yka-kg-JLd" id="1Uo-ij-kAB"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Live Chat" id="Bai-bC-DdR"/>
                     <connections>
                         <outlet property="accessKey" destination="BgO-tB-aap" id="Kk9-TX-Z39"/>
                     </connections>
