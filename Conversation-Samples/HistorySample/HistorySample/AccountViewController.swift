@@ -22,7 +22,9 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var withWelcomeMessage: UISwitch!
     @IBOutlet weak var server: UITextField!
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
-    let spinner = UIActivityIndicatorView()    
+    @IBOutlet weak var submitButton: OptionButton!
+    
+    let spinner = UIActivityIndicatorView()
     var chatController: ChatController!
     @IBOutlet weak var startBtn: UIBarButtonItem!
     
@@ -52,6 +54,7 @@ class AccountViewController: UIViewController {
         self.addReachabilityObserver()
         
         if let accountParams = UserDefaults.standard.dictionary(forKey: "Account") as? [String: String] {
+            self.submitButton.isEnabled = true
             self.accountName.text = accountParams["accountName"]
             self.kb.text = accountParams["kb"]
             self.apiKey.text = accountParams["apiKey"]
@@ -73,7 +76,7 @@ class AccountViewController: UIViewController {
     }
     
     
-    @IBAction func presentNanorep(_ sender: UIBarButtonItem) {
+    @IBAction func presentNanorep(_ sender: Any) {
         if !(self.reachability?.isReachable)! {
             self.presentNetorkPopup()
             return
@@ -139,9 +142,9 @@ class AccountViewController: UIViewController {
     
     @objc func updateHeight(notification: Notification)  {
         if notification.name == NSNotification.Name.UIKeyboardWillHide {
-            self.keyboardConstraint.constant = 0
+            self.keyboardConstraint.constant = 27
         } else {
-            let height = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.size.height
+            let height = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.size.height + 27
             self.keyboardConstraint.constant = height
         }
     }
@@ -178,13 +181,19 @@ extension AccountViewController: NRChatEngineDelegate {
 extension AccountViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.size.width, height: 44)))
-        view.backgroundColor = UIColor.lightGray
-        let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.size.width, height: 44)))
+        view.backgroundColor = UIColor.white
+        let button = OptionButton(frame: CGRect(origin: CGPoint(x: 20, y: 7), size: CGSize(width: 120, height: 37)))
+        let textColor = UIColor(red: 74 / 255.0, green: 74 / 255.0, blue: 74 / 255.0, alpha: 1)
         button.setTitle("Add Context", for: .normal)
+        button.tintColor = textColor
         view.addSubview(button)
-        button.setTitleColor(UIColor.red, for: .normal)
+        button.setTitleColor(textColor, for: .normal)
         button.addTarget(self, action: #selector(AccountViewController.addContext), for: .touchUpInside)
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row < self.context.count - 1
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -240,7 +249,7 @@ extension AccountViewController: ContinuityProvider {
 extension AccountViewController: ChatControllerDelegate {
     func shouldPresentChatViewController(_ viewController: UIViewController!) {
         self.chatViewController = viewController
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -547,5 +556,14 @@ extension AccountViewController: SpeechReconitionDelegate {
         default:
             break
         }
+    }
+}
+
+extension AccountViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            self.submitButton.isEnabled = text.count + string.count > 1
+        }
+        return true
     }
 }
