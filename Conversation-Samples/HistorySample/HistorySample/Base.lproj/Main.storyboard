@@ -48,8 +48,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="tGD-eS-DgJ">
-                                <rect key="frame" x="0.0" y="356" width="375" height="220"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="35" translatesAutoresizingMaskIntoConstraints="NO" id="tGD-eS-DgJ">
+                                <rect key="frame" x="0.0" y="356" width="375" height="311"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="n9i-hv-Ip8" customClass="ContextTableViewCell" customModule="HistorySample" customModuleProvider="target">
@@ -128,18 +128,6 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYp-La-nV7">
                                 <rect key="frame" x="310" y="315" width="51" height="31"/>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wR-eh-cQf" customClass="OptionButton" customModule="HistorySample" customModuleProvider="target">
-                                <rect key="frame" x="16" y="600" width="343" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="4bM-L9-YCQ"/>
-                                </constraints>
-                                <state key="normal" title="START CHAT">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="presentNanorep:" destination="aam-yL-Nl4" eventType="touchUpInside" id="Ofb-Gh-xFR"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -148,13 +136,11 @@
                             <constraint firstItem="gsY-fL-gVy" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="5bK-gV-bm5"/>
                             <constraint firstItem="7C9-NN-RXD" firstAttribute="top" secondItem="2fV-jk-jvv" secondAttribute="bottom" constant="8" id="732-2v-lg0"/>
                             <constraint firstItem="m3x-NT-Uuh" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="E3o-bA-eWo"/>
-                            <constraint firstItem="3wR-eh-cQf" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="PvV-Zb-2i4"/>
                             <constraint firstItem="2fV-jk-jvv" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="Rf9-LV-TbF"/>
                             <constraint firstItem="gsY-fL-gVy" firstAttribute="top" secondItem="F2c-6E-Wr6" secondAttribute="top" constant="29" id="UVV-WO-fR3"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="7C9-NN-RXD" secondAttribute="trailing" constant="16" id="UmV-zj-pNK"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="2fV-jk-jvv" secondAttribute="trailing" constant="16" id="VPE-ty-3MK"/>
                             <constraint firstItem="tGD-eS-DgJ" firstAttribute="top" secondItem="Y3p-Ni-Anx" secondAttribute="bottom" constant="16" id="Y6t-La-7gY"/>
-                            <constraint firstItem="3wR-eh-cQf" firstAttribute="top" secondItem="tGD-eS-DgJ" secondAttribute="bottom" constant="24" id="bzL-8a-Wdr"/>
                             <constraint firstItem="m3x-NT-Uuh" firstAttribute="top" secondItem="7C9-NN-RXD" secondAttribute="bottom" constant="8" id="fBp-x4-xIR"/>
                             <constraint firstItem="tGD-eS-DgJ" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" id="m8W-Zc-e40"/>
                             <constraint firstItem="Y3p-Ni-Anx" firstAttribute="leading" secondItem="F2c-6E-Wr6" secondAttribute="leading" constant="16" id="mV0-A5-CjV"/>
@@ -163,21 +149,26 @@
                             <constraint firstItem="2fV-jk-jvv" firstAttribute="top" secondItem="gsY-fL-gVy" secondAttribute="bottom" constant="8" id="pR0-At-UaL"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="m3x-NT-Uuh" secondAttribute="trailing" constant="16" id="pm2-Jh-dOe"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="gsY-fL-gVy" secondAttribute="trailing" constant="16" id="rhD-MP-vnc"/>
-                            <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="3wR-eh-cQf" secondAttribute="trailing" constant="16" id="sft-eY-W8B"/>
-                            <constraint firstItem="F2c-6E-Wr6" firstAttribute="bottom" secondItem="3wR-eh-cQf" secondAttribute="bottom" constant="27" id="t5q-XG-ixi"/>
+                            <constraint firstItem="F2c-6E-Wr6" firstAttribute="bottom" secondItem="tGD-eS-DgJ" secondAttribute="bottom" id="xfc-50-CkE"/>
                             <constraint firstItem="F2c-6E-Wr6" firstAttribute="trailing" secondItem="uYp-La-nV7" secondAttribute="trailing" constant="16" id="yUN-ql-6bt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F2c-6E-Wr6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Bot Chat" id="Jw4-7s-0xg"/>
+                    <navigationItem key="navigationItem" title="Bot Chat" id="Jw4-7s-0xg">
+                        <barButtonItem key="rightBarButtonItem" title="Start Chat" id="cxu-Lt-8Bi">
+                            <connections>
+                                <action selector="presentNanorep:" destination="aam-yL-Nl4" id="O5E-Ov-6VC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="accountName" destination="gsY-fL-gVy" id="5uJ-iZ-RBz"/>
                         <outlet property="apiKey" destination="7C9-NN-RXD" id="ucM-bk-Exk"/>
                         <outlet property="contextTableView" destination="tGD-eS-DgJ" id="yGh-uU-Xxc"/>
                         <outlet property="kb" destination="2fV-jk-jvv" id="71c-EJ-mRj"/>
-                        <outlet property="keyboardConstraint" destination="t5q-XG-ixi" id="vEU-vp-aic"/>
+                        <outlet property="keyboardConstraint" destination="xfc-50-CkE" id="DuF-27-8vb"/>
                         <outlet property="server" destination="m3x-NT-Uuh" id="9cT-tI-NGJ"/>
-                        <outlet property="submitButton" destination="3wR-eh-cQf" id="Usu-AE-Myt"/>
+                        <outlet property="submitButton" destination="cxu-Lt-8Bi" id="gxy-EF-f8V"/>
                         <outlet property="withWelcomeMessage" destination="uYp-La-nV7" id="qrG-7g-BUE"/>
                     </connections>
                 </viewController>
@@ -523,7 +514,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43m-xs-R6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3465" y="31"/>
+            <point key="canvasLocation" x="3708" y="24"/>
         </scene>
     </scenes>
     <resources>
