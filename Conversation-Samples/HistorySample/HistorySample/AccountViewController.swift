@@ -22,7 +22,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var withWelcomeMessage: UISwitch!
     @IBOutlet weak var server: UITextField!
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
-    @IBOutlet weak var submitButton: OptionButton!
+    @IBOutlet weak var submitButton: UIBarButtonItem!
     
     let spinner = UIActivityIndicatorView()
     var chatController: ChatController!
@@ -60,9 +60,27 @@ class AccountViewController: UIViewController {
             self.apiKey.text = accountParams["apiKey"]
             self.server.text = accountParams["server"]
         }
-        self.context = UserDefaults.standard.array(forKey: "Contexts") as? [[String: String]] ?? [["": ""]]
+        if let ctxt = UserDefaults.standard.array(forKey: "Contexts") as? [[String: String]] {
+            self.canAddContext = true
+            self.context = ctxt
+            self.addContext()
+        } else {
+            self.context = [["": ""]]
+        }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.addContext()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if self.context.count - 1 > 0 {
+            self.context.remove(at: self.context.count - 1)
+        }
+        super.viewDidDisappear(animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -103,7 +121,9 @@ class AccountViewController: UIViewController {
         storeAccount["apiKey"] = self.apiKey.text
         storeAccount["server"] = self.server.text
         UserDefaults.standard.set(storeAccount, forKey: "Account")
-        UserDefaults.standard.set(self.context, forKey: "Contexts")
+        if self.context.count > 1 {
+            UserDefaults.standard.set(self.context, forKey: "Contexts")
+        }
         UserDefaults.standard.synchronize()
         var temp = [String: String]()
         self.context.forEach { (val) in
@@ -142,9 +162,9 @@ class AccountViewController: UIViewController {
     
     @objc func updateHeight(notification: Notification)  {
         if notification.name == NSNotification.Name.UIKeyboardWillHide {
-            self.keyboardConstraint.constant = 27
+            self.keyboardConstraint.constant = 0
         } else {
-            let height = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.size.height + 27
+            let height = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue.size.height + 0
             self.keyboardConstraint.constant = height
         }
     }
@@ -180,9 +200,9 @@ extension AccountViewController: NRChatEngineDelegate {
 
 extension AccountViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.size.width, height: 44)))
+        let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.size.width, height: 35)))
         view.backgroundColor = UIColor.white
-        let button = OptionButton(frame: CGRect(origin: CGPoint(x: 20, y: 7), size: CGSize(width: 120, height: 37)))
+        let button = OptionButton(frame: CGRect(origin: CGPoint(x: 20, y: 5), size: CGSize(width: 120, height: 30)))
         let textColor = UIColor(red: 74 / 255.0, green: 74 / 255.0, blue: 74 / 255.0, alpha: 1)
         button.setTitle("Add Context", for: .normal)
         button.tintColor = textColor
@@ -249,11 +269,11 @@ extension AccountViewController: ContinuityProvider {
 extension AccountViewController: ChatControllerDelegate {
     func shouldPresentChatViewController(_ viewController: UIViewController!) {
         self.chatViewController = viewController
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Start Chat", style: .plain, target: self, action: #selector(AccountViewController.presentNanorep(_:))) 
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func didFailLoadChatWithError(_ error: Error!) {
+    func didFailWithError(_ error: BLDError!) {
         
     }
     
