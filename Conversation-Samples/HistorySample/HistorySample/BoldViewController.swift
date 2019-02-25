@@ -42,7 +42,7 @@ class BoldViewController: UIViewController {
         //        self.chatViewController.present(imagePicker, animated: true, completion: nil)
     }
     
-    @IBAction func presentBold(_ sender: UIBarButtonItem) {
+    @IBAction func presentBold(_ sender: OptionButton) {
         let account = BCAccount(accessKey: self.accessKey.text)
         self.chatController = ChatController(account: account)
         let font = CustomFont()
@@ -63,7 +63,7 @@ class BoldViewController: UIViewController {
 extension BoldViewController: ChatControllerDelegate {
     func shouldPresentChatViewController(_ viewController: UIViewController!) {
         self.chatViewController = viewController
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(AccountViewController.presentNanorep(_:)))
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
