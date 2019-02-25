@@ -6,12 +6,13 @@
 //  Copyright © 2018 bold360ai. All rights reserved.
 //
 
-import UIKit
-import BoldAIEngine
 import Bold360AI
+import UIKit
+import MobileCoreServices
+import QuartzCore
 
 class AccountViewController: UIViewController {
-    
+    let imagePicker = UIImagePickerController()
     var context: [[String: String]]!
     var canAddContext: Bool = false
     
@@ -26,10 +27,16 @@ class AccountViewController: UIViewController {
     var chatController: ChatController!
     @IBOutlet weak var startBtn: UIBarButtonItem!
     
+    /// ChatHandler Extention
+    var uploadProvider: FileUploadProvider?
+    var continuityProvider: ContinuityProvider?
+    var currentChatState: ChatState = .preparing
+    ///
     var delegate: ChatHandlerDelegate!
     var chatControllerDelegate: ChatControllerDelegate!
     var chatHandlerProvider: ChatHandlerProvider!
     var chatViewController: UIViewController!
+    var uploadCompletionHandler : ((FileUploadInfo?) -> Void)!;
     
     let reachability = Reachability()
     
@@ -108,6 +115,7 @@ class AccountViewController: UIViewController {
         }
         self.chatController = ChatController(account: account)
         self.chatController.delegate = self
+        self.chatController.uploadProvider = self
         /// Example for configurations
 
         self.chatController.viewConfiguration.chatViewConfig.backgroundImage = UIImage(named: "ww_back_light")
@@ -118,9 +126,9 @@ class AccountViewController: UIViewController {
         let font1 = CustomFont()
         font1.fontFileName = "Monotype Sabon Italic.otf"
         font1.font = UIFont(name: "MonotypeSabonW04-Italic", size: 20)
-        self.chatController.viewConfiguration.outgoingConfig.customFont = font
-        self.chatController.viewConfiguration.incomingBotConfig.customFont = font1
-        self.chatController.viewConfiguration.incomingLiveConfig.customFont = font
+//        self.chatController.viewConfiguration.outgoingConfig.customFont = font
+//        self.chatController.viewConfiguration.incomingBotConfig.customFont = font1
+//        self.chatController.viewConfiguration.incomingLiveConfig.customFont = font
 //        self.chatController.viewConfiguration.incomingBotConfig.dateStampColor = UIColor.black
 //        self.chatController.viewConfiguration.outgoingConfig.avatar = UIImage(named: "icon")
 //        self.chatController.viewConfiguration.incomingBotConfig.avatar = UIImage(named: "nrIcon")
@@ -156,6 +164,27 @@ class AccountViewController: UIViewController {
             self.contextTableView.endUpdates()
             self.contextTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
+    }
+}
+
+extension AccountViewController: FileUploadProvider {
+    func uploadFile(completionHandler: ((FileUploadInfo?) -> Void)!) {
+        self.uploadCompletionHandler = completionHandler;
+        self.openPhotoLibrary()
+    }
+    
+    func openPhotoLibrary() {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            print("can't open photo library")
+            return
+        }
+        
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        
+//        self.navigationController?.performSegue(withIdentifier: "picker", sender: nil)
+        self.navigationController?.present(imagePicker, animated: true, completion: nil)
+//        self.chatViewController.present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -244,10 +273,20 @@ extension AccountViewController: ChatControllerDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func didFailLoadChatWithError(_ error: Error!) {
-        
+    func didFailWithError(_ error: BLDError!) {
+        switch error.type {
+        case GeneralErrorType:
+            print("GeneralErrorType")
+        case BLDChatErrorTypeFailedToStart:
+            print("BLDChatErrorTypeFailedToStart")
+        case BLDChatErrorTypeFailedToFinish:
+            print("BLDChatErrorTypeFailedToFinish")
+        case BLDChatErrorTypeFailedToSubmitForm:
+            print("BLDChatErrorTypeFailedToSubmitForm")
+        default:
+            break
+        }
     }
-    
     
     func shouldHandleFormPresentation(_ formController: UIViewController!) -> Bool {
         return false
@@ -367,6 +406,10 @@ extension AccountViewController: ChatControllerDelegate {
 }
 
 extension AccountViewController: ChatHandler {
+    var isUploadSupported: Bool {
+        return false;
+    }
+    
     func submitForm(_ form: BrandedForm!) {
         
     }
@@ -547,5 +590,30 @@ extension AccountViewController: SpeechReconitionDelegate {
         default:
             break
         }
+    }
+}
+
+extension AccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        defer {
+            picker.dismiss(animated: true)
+            print(info)
+            let infoFile = FileUploadInfo()
+            infoFile.fileDescription = "<p><a target='_blank' href='https://www.weightwatchers.com/us/find-a-meeting/'>https://www.weightwatchers.com/us/find-a-meeting/</a></p>"
+            self.uploadCompletionHandler(infoFile)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        defer {
+            picker.dismiss(animated: true)
+            let infoFile = FileUploadInfo()
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey:"file failed to upload"])
+            infoFile.error = error
+            
+            self.uploadCompletionHandler(infoFile)
+        }
+        
+        print("did cancel")
     }
 }

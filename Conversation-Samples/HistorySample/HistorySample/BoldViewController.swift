@@ -12,18 +12,34 @@ import Bold360AI
 class BoldViewController: UIViewController {
     var chatController: ChatController!
     var chatViewController: UIViewController!
+    let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var accessKey: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.openPhotoLibrary()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func openPhotoLibrary() {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            print("can't open photo library")
+            return
+        }
+        
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        
+        //        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.performSegue(withIdentifier: "picker", sender: nil)
+        //        self.navigationController?.present(imagePicker, animated: true, completion: nil)
+        //        self.chatViewController.present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func presentBold(_ sender: UIBarButtonItem) {
@@ -51,7 +67,7 @@ extension BoldViewController: ChatControllerDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func didFailLoadChatWithError(_ error: Error!) {
+    func didFailWithError(_ event: BLDError!) {
         
     }
     
@@ -123,6 +139,8 @@ extension BoldViewController: ChatControllerDelegate {
         }
     }
     
+    
+    
     func shouldPresent(_ form: BrandedForm!, handler completionHandler: (((UIViewController & BoldForm)?) -> Void)!) {
         if (completionHandler != nil) {
             if form.form?.type == BCFormTypePostChat {
@@ -140,11 +158,42 @@ extension BoldViewController: ChatControllerDelegate {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.chatController.endChat()
+        self.chatController?.endChat()
         super.viewDidDisappear(animated)
     }
     
     @objc func buttonAction(sender: UIButton!) {
-        self.chatController.endChat()
+        self.chatController?.endChat()
+    }
+}
+
+extension BoldViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //        defer {
+        //            picker.dismiss(animated: true)
+        //        }
+        
+        print(info)
+        picker.dismiss(animated: true, completion: nil)
+        // get the image
+        //        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+        //            return
+        //        }
+        //
+        // do something with it
+        //        imageView.image = image
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //        defer {
+        //            picker.dismiss(animated: true)
+        //        }
+        
+        print("did cancel")
+        
+        DispatchQueue.main.async {
+            picker.dismiss(animated: true, completion: nil)
+        }
     }
 }
