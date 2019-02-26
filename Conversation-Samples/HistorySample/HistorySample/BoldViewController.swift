@@ -37,7 +37,7 @@ class BoldViewController: UIViewController {
         imagePicker.delegate = self
         
         //        self.navigationController?.popViewController(animated: false)
-        self.navigationController?.performSegue(withIdentifier: "picker", sender: nil)
+//        self.navigationController?.performSegue(withIdentifier: "picker", sender: nil)
         //        self.navigationController?.present(imagePicker, animated: true, completion: nil)
         //        self.chatViewController.present(imagePicker, animated: true, completion: nil)
     }

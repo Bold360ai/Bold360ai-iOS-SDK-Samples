@@ -212,7 +212,7 @@ extension AccountViewController: FileUploadProvider {
 }
 
 extension AccountViewController: NRChatEngineDelegate {
-    func didFetchConvesationId(_ conversationId: NSNumber!) {
+    func didFetchConvesationId(_ conversationId: String!) {
         
     }
     
