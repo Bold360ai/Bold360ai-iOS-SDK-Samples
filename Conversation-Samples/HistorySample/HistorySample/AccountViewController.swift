@@ -631,13 +631,15 @@ extension AccountViewController: UITextFieldDelegate {
     }
 }
 
+
+
 extension AccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         defer {
             picker.dismiss(animated: true)
             print(info)
             let infoFile = FileUploadInfo()
-            infoFile.fileDescription = "<p><a target='_blank' href='https://www.weightwatchers.com/us/find-a-meeting/'>https://www.weightwatchers.com/us/find-a-meeting/</a></p>"
+            infoFile.fileDescription = "file was uploaded under: https://uploaded_file.com"
             self.uploadCompletionHandler(infoFile)
         }
     }

@@ -117,15 +117,17 @@ extension BoldViewController: ChatControllerDelegate {
     func didUpdateState(_ event: ChatStateEvent!) {
         if (event.scope == StatementScope.Live) {
             if (ChatState.preparing == event.state) {
-                self.chatViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "End Chat", style: .plain, target: self, action:#selector(buttonAction))
+
             } else if (ChatState.ended == event.state) {
-                self.chatViewController.navigationItem.rightBarButtonItem = nil
+
             }
         }
         
         switch event.state {
         case .preparing:
             print("ChatPreparing")
+            self.chatViewController.navigationItem.rightBarButtonItem =
+                UIBarButtonItem(title: "End Chat", style: .plain, target: self, action:#selector(buttonAction))
         case .started:
             print("ChatStarted")
         case .accepted:
@@ -134,6 +136,7 @@ extension BoldViewController: ChatControllerDelegate {
             print("ChatEnding")
         case .ended:
             print("ChatEnded")
+            self.navigationController?.popViewController(animated: true)
         case .unavailable:
             print("ChatUnavailable")
         }
@@ -163,7 +166,7 @@ extension BoldViewController: ChatControllerDelegate {
     }
     
     @objc func buttonAction(sender: UIButton!) {
-        self.chatController?.endChat()
+        self.chatController?.terminate()
     }
 }
 
