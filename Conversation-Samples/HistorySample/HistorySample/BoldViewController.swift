@@ -116,34 +116,26 @@ extension BoldViewController: ChatControllerDelegate {
     
     func didUpdateState(_ event: ChatStateEvent!) {
         if (event.scope == StatementScope.Live) {
-            if (ChatState.preparing == event.state) {
-
-            } else if (ChatState.ended == event.state) {
-
+            switch event.state {
+            case .preparing:
+                print("ChatPreparing")
+                self.chatViewController.navigationItem.rightBarButtonItem =
+                    UIBarButtonItem(title: "End Chat", style: .plain, target: self, action:#selector(buttonAction))
+            case .started:
+                print("ChatStarted")
+            case .accepted:
+                print("ChatAccepted")
+            case .ending:
+                print("ChatEnding")
+            case .ended:
+                print("ChatEnded")
+                self.navigationController?.popViewController(animated: true)
+            case .unavailable:
+                print("ChatUnavailable")
             }
         }
-        
-        switch event.state {
-        case .preparing:
-            print("ChatPreparing")
-            self.chatViewController.navigationItem.rightBarButtonItem =
-                UIBarButtonItem(title: "End Chat", style: .plain, target: self, action:#selector(buttonAction))
-        case .started:
-            print("ChatStarted")
-        case .accepted:
-            print("ChatAccepted")
-        case .ending:
-            print("ChatEnding")
-        case .ended:
-            print("ChatEnded")
-            self.navigationController?.popViewController(animated: true)
-        case .unavailable:
-            print("ChatUnavailable")
-        }
     }
-    
-    
-    
+
     func shouldPresent(_ form: BrandedForm!, handler completionHandler: (((UIViewController & BoldForm)?) -> Void)!) {
         if (completionHandler != nil) {
             if form.form?.type == BCFormTypePostChat {

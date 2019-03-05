@@ -51,11 +51,11 @@ class PostChatViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let field = formInfo.form?.formFields[indexPath.row] as? BCFormField {
             if field.type == BCFormFieldTypeEmail {
-                let cell: TextCell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextCell
+                let cell: TextCell = tableView.dequeueReusableCell(withIdentifier:"TextCell", for: indexPath) as! TextCell
                 cell.txtField.placeholder = field.label
                 return cell
             } else if field.type == BCFormFieldTypeRadio {
-                let cell: OptionsCell = tableView.dequeueReusableCell(withIdentifier: "OptionsCell", for: indexPath) as! OptionsCell
+                let cell: OptionsCell = tableView.dequeueReusableCell(withIdentifier:"OptionsCell", for: indexPath) as! OptionsCell
                 cell.optionsBtn.setTitle(field.label, for: .normal)
                 cell.optionsBtn.setTitle(field.label, for: .focused)
                 cell.fillOptions(field: field) { (vc) in
@@ -63,13 +63,17 @@ class PostChatViewController: UITableViewController {
                 }
                 return cell
             } else {
-                let cell: RatingCell = tableView.dequeueReusableCell(withIdentifier: "RatingCell", for: indexPath) as! RatingCell
+                let cell: RatingCell = tableView.dequeueReusableCell(withIdentifier:"RatingCell", for: indexPath) as! RatingCell
                 cell.ratingTitle.text = field.label
                 return cell
             }
         }
         
         return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50.0
     }
 }
 

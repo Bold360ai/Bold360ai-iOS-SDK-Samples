@@ -87,9 +87,9 @@
 				AFA566C521F09ECC00037155 /* UnavailableViewController.swift */,
 				48E3C8FE21E38EF700B2E11B /* PostChatViewController.swift */,
 				48E3C8FF21E38EF700B2E11B /* RatingCell.swift */,
+				48E3C90221E38EF700B2E11B /* RatingControl.swift */,
 				48E3C90021E38EF700B2E11B /* TextCell.swift */,
 				48E3C90121E38EF700B2E11B /* OptionsCell.swift */,
-				48E3C90221E38EF700B2E11B /* RatingControl.swift */,
 			);
 			path = CustomForms;
 			sourceTree = "<group>";
