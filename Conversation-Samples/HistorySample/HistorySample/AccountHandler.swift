@@ -12,7 +12,7 @@ import BoldAIEngine
 class AccountHandler: NSObject {
     var items = [InputItemModel]()
     var rawData: [[String: Any]]!
-    var withWelcomeMessage = false
+    var withWelcomeMessage = true
     var enableAddingContext: Bool? {
         didSet {
             self.items.last?.value = self.enableAddingContext

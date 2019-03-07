@@ -122,6 +122,7 @@ class BotTableViewController: UITableViewController {
 }
 
 extension BotTableViewController: AccountDataTableViewCellDelegate {
+    // MARK: AccountDataTableViewCellDelegate
     func onEvent(event: DataEvent) {
         switch event {
         case .addContext:
@@ -146,6 +147,8 @@ extension BotTableViewController: AccountDataTableViewCellDelegate {
 
 
 extension BotTableViewController: ChatControllerDelegate {
+    // MARK: ChatControllerDelegate
+    
     func shouldPresentChatViewController(_ viewController: UIViewController!) {
         self.chatViewController = viewController
         self.navigationItem.rightBarButtonItem = self.startChatButton
@@ -164,6 +167,7 @@ extension BotTableViewController: ChatControllerDelegate {
                 self.present(alert, animated: true, completion: nil)
                 self.navigationItem.rightBarButtonItem = self.startChatButton
             }
+
             break
         case BLDChatErrorTypeFailedToFinish:
             print("BLDChatErrorTypeFailedToFinish")
@@ -222,7 +226,7 @@ extension BotTableViewController: ChatControllerDelegate {
     }
     
     func shouldPresentWelcomeMessage() -> Bool {
-        return false
+        return self.accountHandler.withWelcomeMessage
     }
     
 //    private func handleWelcomeMsgPresentation() -> Bool {

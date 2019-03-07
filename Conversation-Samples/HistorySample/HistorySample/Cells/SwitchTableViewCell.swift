@@ -16,10 +16,17 @@ class SwitchTableViewCell: AccountDataTableViewCell {
     override var data: InputItemModel? {
         didSet {
             self.label.text = self.data?.hint
-            if let isOn = self.data?.value as? Bool {
-                self.withWelcome.isOn = isOn
+            guard let isOn = self.data?.value as? Bool else {
+                self.data?.value = true
+                return
             }
+            self.withWelcome.isOn = isOn
         }
     }
-
+    
+    
+    @IBAction func changeState(_ sender: UISwitch) {
+        self.data?.value = sender.isOn
+    }
+    
 }
