@@ -13,7 +13,7 @@ class ContextsTableViewCell: AccountDataTableViewCell {
     @IBOutlet weak var keyTextField: UITextField!
     @IBOutlet weak var valueTextField: UITextField!
     
-    var isValid: Bool = false
+    var isValid = false
     
     override var data: InputItemModel? {
         didSet {
@@ -46,6 +46,6 @@ extension ContextsTableViewCell: UITextFieldDelegate {
             self.data?.value = ""
             self.delegate?.onEvent(event: .contextInValid)
         }
-        return true && string.count != 0
+        return true
     }
 }
