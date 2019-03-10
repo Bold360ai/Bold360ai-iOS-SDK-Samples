@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4822F80C2226BFCC00479219 /* InputItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822F80B2226BFCC00479219 /* InputItemModel.swift */; };
 		4836E07721F8A116004610FE /* waltographUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4836E07621F8A115004610FE /* waltographUI.ttf */; };
 		4836E07B21F8D8DD004610FE /* Monotype Sabon Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4836E07A21F8D8D8004610FE /* Monotype Sabon Italic.otf */; };
 		4837107E221EA19E00DD3A6D /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4837107D221EA19D00DD3A6D /* OptionButton.swift */; };
@@ -18,6 +19,14 @@
 		48E3C90521E38EF700B2E11B /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C90021E38EF700B2E11B /* TextCell.swift */; };
 		48E3C90621E38EF700B2E11B /* OptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C90121E38EF700B2E11B /* OptionsCell.swift */; };
 		48E3C90721E38EF700B2E11B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3C90221E38EF700B2E11B /* RatingControl.swift */; };
+		48F0CECF222E73B7002A95FA /* InitObj.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F0CECE222E73B7002A95FA /* InitObj.plist */; };
+		48F0CED1222E8719002A95FA /* AccountHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CED0222E8719002A95FA /* AccountHandler.swift */; };
+		48F0CED3222EA993002A95FA /* BotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CED2222EA993002A95FA /* BotTableViewController.swift */; };
+		48F0CED5222EAB0B002A95FA /* AccountDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CED4222EAB0B002A95FA /* AccountDataTableViewCell.swift */; };
+		48F0CED8222EAC26002A95FA /* InputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CED7222EAC26002A95FA /* InputTableViewCell.swift */; };
+		48F0CEDA222EAC47002A95FA /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CED9222EAC47002A95FA /* SwitchTableViewCell.swift */; };
+		48F0CEDC222EADB8002A95FA /* ContextsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CEDB222EADB8002A95FA /* ContextsTableViewCell.swift */; };
+		48F0CEDE222EADD4002A95FA /* AddContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CEDD222EADD4002A95FA /* AddContextTableViewCell.swift */; };
 		6D769D2923D0214ECC1F4C49 /* Pods_HistorySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3156F362D636619CCB2A33C1 /* Pods_HistorySample.framework */; };
 		AF30F40F212AC34300B0D3B9 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */; };
 		AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */; };
@@ -34,6 +43,7 @@
 /* Begin PBXFileReference section */
 		3156F362D636619CCB2A33C1 /* Pods_HistorySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistorySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		418D49ED04F55FB9311F16CE /* Pods-HistorySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.debug.xcconfig"; sourceTree = "<group>"; };
+		4822F80B2226BFCC00479219 /* InputItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputItemModel.swift; sourceTree = "<group>"; };
 		4836E07621F8A115004610FE /* waltographUI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = waltographUI.ttf; sourceTree = "<group>"; };
 		4836E07A21F8D8D8004610FE /* Monotype Sabon Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monotype Sabon Italic.otf"; sourceTree = "<group>"; };
 		4837107D221EA19D00DD3A6D /* OptionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
@@ -45,6 +55,14 @@
 		48E3C90021E38EF700B2E11B /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		48E3C90121E38EF700B2E11B /* OptionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCell.swift; sourceTree = "<group>"; };
 		48E3C90221E38EF700B2E11B /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		48F0CECE222E73B7002A95FA /* InitObj.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InitObj.plist; sourceTree = "<group>"; };
+		48F0CED0222E8719002A95FA /* AccountHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHandler.swift; sourceTree = "<group>"; };
+		48F0CED2222EA993002A95FA /* BotTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotTableViewController.swift; sourceTree = "<group>"; };
+		48F0CED4222EAB0B002A95FA /* AccountDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataTableViewCell.swift; sourceTree = "<group>"; };
+		48F0CED7222EAC26002A95FA /* InputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTableViewCell.swift; sourceTree = "<group>"; };
+		48F0CED9222EAC47002A95FA /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		48F0CEDB222EADB8002A95FA /* ContextsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextsTableViewCell.swift; sourceTree = "<group>"; };
+		48F0CEDD222EADD4002A95FA /* AddContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContextTableViewCell.swift; sourceTree = "<group>"; };
 		5ECB1A23AD29367ADDFA97FE /* Pods-HistorySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.release.xcconfig"; sourceTree = "<group>"; };
 		AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountParamsHelper.swift; sourceTree = "<group>"; };
@@ -92,6 +110,18 @@
 				48E3C90121E38EF700B2E11B /* OptionsCell.swift */,
 			);
 			path = CustomForms;
+			sourceTree = "<group>";
+		};
+		48F0CED6222EAC06002A95FA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48F0CED4222EAB0B002A95FA /* AccountDataTableViewCell.swift */,
+				48F0CED7222EAC26002A95FA /* InputTableViewCell.swift */,
+				48F0CED9222EAC47002A95FA /* SwitchTableViewCell.swift */,
+				48F0CEDB222EADB8002A95FA /* ContextsTableViewCell.swift */,
+				48F0CEDD222EADD4002A95FA /* AddContextTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		9985759F9653F914C384A98C /* Pods */ = {
@@ -145,6 +175,7 @@
 		AF9862A120CFEA9B00501472 /* HistorySample */ = {
 			isa = PBXGroup;
 			children = (
+				48F0CED6222EAC06002A95FA /* Cells */,
 				48E3C8FD21E38EF700B2E11B /* CustomForms */,
 				AF30F41A212AD63F00B0D3B9 /* LocalAccountParams */,
 				AF30F410212AC35500B0D3B9 /* Managers */,
@@ -158,6 +189,10 @@
 				AF9862AE20CFEA9B00501472 /* Info.plist */,
 				48C27BD02189F84F000B5BF4 /* ContextTableViewCell.swift */,
 				4837107D221EA19D00DD3A6D /* OptionButton.swift */,
+				4822F80B2226BFCC00479219 /* InputItemModel.swift */,
+				48F0CECE222E73B7002A95FA /* InitObj.plist */,
+				48F0CED0222E8719002A95FA /* AccountHandler.swift */,
+				48F0CED2222EA993002A95FA /* BotTableViewController.swift */,
 			);
 			path = HistorySample;
 			sourceTree = "<group>";
@@ -228,6 +263,7 @@
 				AF9862AD20CFEA9B00501472 /* LaunchScreen.storyboard in Resources */,
 				4836E07721F8A116004610FE /* waltographUI.ttf in Resources */,
 				AF9862AA20CFEA9B00501472 /* Assets.xcassets in Resources */,
+				48F0CECF222E73B7002A95FA /* InitObj.plist in Resources */,
 				AF30F419212ACB0200B0D3B9 /* AccountParams.plist in Resources */,
 				AF9862A820CFEA9B00501472 /* Main.storyboard in Resources */,
 			);
@@ -293,19 +329,27 @@
 			files = (
 				AFD520D8211B1B8700B7C448 /* Item.swift in Sources */,
 				48C27BCD2189EEA4000B5BF4 /* AccountViewController.swift in Sources */,
+				48F0CEDA222EAC47002A95FA /* SwitchTableViewCell.swift in Sources */,
 				48C27BD12189F84F000B5BF4 /* ContextTableViewCell.swift in Sources */,
 				48E3C8FA21E36F3300B2E11B /* BoldViewController.swift in Sources */,
 				48E3C90421E38EF700B2E11B /* RatingCell.swift in Sources */,
+				48F0CED5222EAB0B002A95FA /* AccountDataTableViewCell.swift in Sources */,
 				4837107E221EA19E00DD3A6D /* OptionButton.swift in Sources */,
 				AF93D213211B1AF800D8AC49 /* DBManager.swift in Sources */,
+				48F0CEDC222EADB8002A95FA /* ContextsTableViewCell.swift in Sources */,
 				AF30F40F212AC34300B0D3B9 /* ReachabilityManager.swift in Sources */,
 				48E3C90321E38EF700B2E11B /* PostChatViewController.swift in Sources */,
+				48F0CED8222EAC26002A95FA /* InputTableViewCell.swift in Sources */,
 				48E3C90621E38EF700B2E11B /* OptionsCell.swift in Sources */,
 				AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */,
+				48F0CED3222EA993002A95FA /* BotTableViewController.swift in Sources */,
 				48E3C90721E38EF700B2E11B /* RatingControl.swift in Sources */,
+				48F0CEDE222EADD4002A95FA /* AddContextTableViewCell.swift in Sources */,
 				AFA566C621F09ECC00037155 /* UnavailableViewController.swift in Sources */,
+				48F0CED1222E8719002A95FA /* AccountHandler.swift in Sources */,
 				AF9862A320CFEA9B00501472 /* AppDelegate.swift in Sources */,
 				48E3C90521E38EF700B2E11B /* TextCell.swift in Sources */,
+				4822F80C2226BFCC00479219 /* InputItemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
