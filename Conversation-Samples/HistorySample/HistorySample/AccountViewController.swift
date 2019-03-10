@@ -38,7 +38,7 @@ class AccountViewController: UIViewController {
     var chatControllerDelegate: ChatControllerDelegate!
     var chatHandlerProvider: ChatHandlerProvider!
     var chatViewController: UIViewController!
-    var uploadCompletionHandler : ((FileUploadInfo?) -> Void)!;
+    var uploadCompletionHandler : ((FileUploadInfo?) -> Void)!
     
     let reachability = Reachability()
     
