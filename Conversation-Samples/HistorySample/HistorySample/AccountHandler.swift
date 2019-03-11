@@ -18,6 +18,7 @@ class AccountHandler: NSObject {
             self.items.last?.value = self.enableAddingContext
         }
     }
+    var fileName: String!
     
     var accountParams: AccountParams {
         get {
@@ -25,7 +26,7 @@ class AccountHandler: NSObject {
             self.items.forEach { (item) in
                 self.rawData.append(item.params)
             }
-            UserDefaults.standard.set(self.rawData, forKey: "Account")
+            UserDefaults.standard.set(self.rawData, forKey: self.fileName)
             UserDefaults.standard.synchronize()
             var contexts: [InputItemModel]?
             var nanorepContext: [String: String]?
@@ -66,11 +67,12 @@ class AccountHandler: NSObject {
         }
     }
     
-    override init() {
+    init(fileName: String) {
         super.init()
-        self.rawData = UserDefaults.standard.array(forKey: "Account") as? [[String: Any]]
+        self.fileName = fileName
+        self.rawData = UserDefaults.standard.array(forKey: fileName) as? [[String: Any]]
         if self.rawData == nil {
-            if let path = Bundle.main.path(forResource: "InitObj", ofType: "plist") {
+            if let path = Bundle.main.path(forResource: fileName, ofType: "plist") {
                 self.rawData = NSArray(contentsOfFile: path) as? [[String: Any]]
             }
         }
