@@ -26,15 +26,18 @@ class ContextsTableViewCell: AccountDataTableViewCell {
 
 extension ContextsTableViewCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.count == 0 {
-            textField.text?.removeLast()
-        }
         var name = self.keyTextField.text!
         var value = self.valueTextField.text!
         if textField == self.keyTextField {
             name += string
+            if string.count == 0 {
+                name.removeLast()
+            }
         } else {
             value += string
+            if string.count == 0 {
+                value.removeLast()
+            }
         }
         let isValid = name.count > 0 && value.count > 0
         if isValid {

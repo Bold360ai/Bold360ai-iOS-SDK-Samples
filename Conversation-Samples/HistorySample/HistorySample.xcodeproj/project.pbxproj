@@ -27,6 +27,15 @@
 		48F0CEDA222EAC47002A95FA /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CED9222EAC47002A95FA /* SwitchTableViewCell.swift */; };
 		48F0CEDC222EADB8002A95FA /* ContextsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CEDB222EADB8002A95FA /* ContextsTableViewCell.swift */; };
 		48F0CEDE222EADD4002A95FA /* AddContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0CEDD222EADD4002A95FA /* AddContextTableViewCell.swift */; };
+		48FF751A22354C95009B367B /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF751822354C95009B367B /* AccountTableViewController.swift */; };
+		48FF751B22354C95009B367B /* AccountTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FF751922354C95009B367B /* AccountTableViewController.xib */; };
+		48FF751D22354CCC009B367B /* InputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FF751C22354CCC009B367B /* InputTableViewCell.xib */; };
+		48FF751F22354DB1009B367B /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FF751E22354DB1009B367B /* SwitchTableViewCell.xib */; };
+		48FF752122354EED009B367B /* ContextsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FF752022354EED009B367B /* ContextsTableViewCell.xib */; };
+		48FF752322354FFD009B367B /* AddContextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FF752222354FFD009B367B /* AddContextTableViewCell.xib */; };
+		48FF7525223557AF009B367B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF7524223557AF009B367B /* IntroViewController.swift */; };
+		48FF752722355AEE009B367B /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF752622355AEE009B367B /* SearchTableViewController.swift */; };
+		48FF752922355C3C009B367B /* InitObjSearch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48FF752822355C3B009B367B /* InitObjSearch.plist */; };
 		6D769D2923D0214ECC1F4C49 /* Pods_HistorySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3156F362D636619CCB2A33C1 /* Pods_HistorySample.framework */; };
 		AF30F40F212AC34300B0D3B9 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */; };
 		AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */; };
@@ -63,6 +72,15 @@
 		48F0CED9222EAC47002A95FA /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		48F0CEDB222EADB8002A95FA /* ContextsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextsTableViewCell.swift; sourceTree = "<group>"; };
 		48F0CEDD222EADD4002A95FA /* AddContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContextTableViewCell.swift; sourceTree = "<group>"; };
+		48FF751822354C95009B367B /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		48FF751922354C95009B367B /* AccountTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewController.xib; sourceTree = "<group>"; };
+		48FF751C22354CCC009B367B /* InputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputTableViewCell.xib; sourceTree = "<group>"; };
+		48FF751E22354DB1009B367B /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
+		48FF752022354EED009B367B /* ContextsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContextsTableViewCell.xib; sourceTree = "<group>"; };
+		48FF752222354FFD009B367B /* AddContextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddContextTableViewCell.xib; sourceTree = "<group>"; };
+		48FF7524223557AF009B367B /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		48FF752622355AEE009B367B /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		48FF752822355C3B009B367B /* InitObjSearch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InitObjSearch.plist; sourceTree = "<group>"; };
 		5ECB1A23AD29367ADDFA97FE /* Pods-HistorySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistorySample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HistorySample/Pods-HistorySample.release.xcconfig"; sourceTree = "<group>"; };
 		AF30F40E212AC34300B0D3B9 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		AF30F415212AC74800B0D3B9 /* AccountParamsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountParamsHelper.swift; sourceTree = "<group>"; };
@@ -117,9 +135,13 @@
 			children = (
 				48F0CED4222EAB0B002A95FA /* AccountDataTableViewCell.swift */,
 				48F0CED7222EAC26002A95FA /* InputTableViewCell.swift */,
+				48FF751C22354CCC009B367B /* InputTableViewCell.xib */,
 				48F0CED9222EAC47002A95FA /* SwitchTableViewCell.swift */,
+				48FF751E22354DB1009B367B /* SwitchTableViewCell.xib */,
 				48F0CEDB222EADB8002A95FA /* ContextsTableViewCell.swift */,
+				48FF752022354EED009B367B /* ContextsTableViewCell.xib */,
 				48F0CEDD222EADD4002A95FA /* AddContextTableViewCell.swift */,
+				48FF752222354FFD009B367B /* AddContextTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -191,8 +213,13 @@
 				4837107D221EA19D00DD3A6D /* OptionButton.swift */,
 				4822F80B2226BFCC00479219 /* InputItemModel.swift */,
 				48F0CECE222E73B7002A95FA /* InitObj.plist */,
+				48FF752822355C3B009B367B /* InitObjSearch.plist */,
 				48F0CED0222E8719002A95FA /* AccountHandler.swift */,
 				48F0CED2222EA993002A95FA /* BotTableViewController.swift */,
+				48FF751822354C95009B367B /* AccountTableViewController.swift */,
+				48FF751922354C95009B367B /* AccountTableViewController.xib */,
+				48FF7524223557AF009B367B /* IntroViewController.swift */,
+				48FF752622355AEE009B367B /* SearchTableViewController.swift */,
 			);
 			path = HistorySample;
 			sourceTree = "<group>";
@@ -260,8 +287,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4836E07B21F8D8DD004610FE /* Monotype Sabon Italic.otf in Resources */,
+				48FF752922355C3C009B367B /* InitObjSearch.plist in Resources */,
+				48FF751F22354DB1009B367B /* SwitchTableViewCell.xib in Resources */,
+				48FF752122354EED009B367B /* ContextsTableViewCell.xib in Resources */,
 				AF9862AD20CFEA9B00501472 /* LaunchScreen.storyboard in Resources */,
 				4836E07721F8A116004610FE /* waltographUI.ttf in Resources */,
+				48FF752322354FFD009B367B /* AddContextTableViewCell.xib in Resources */,
+				48FF751B22354C95009B367B /* AccountTableViewController.xib in Resources */,
+				48FF751D22354CCC009B367B /* InputTableViewCell.xib in Resources */,
 				AF9862AA20CFEA9B00501472 /* Assets.xcassets in Resources */,
 				48F0CECF222E73B7002A95FA /* InitObj.plist in Resources */,
 				AF30F419212ACB0200B0D3B9 /* AccountParams.plist in Resources */,
@@ -341,13 +374,16 @@
 				48E3C90321E38EF700B2E11B /* PostChatViewController.swift in Sources */,
 				48F0CED8222EAC26002A95FA /* InputTableViewCell.swift in Sources */,
 				48E3C90621E38EF700B2E11B /* OptionsCell.swift in Sources */,
+				48FF751A22354C95009B367B /* AccountTableViewController.swift in Sources */,
 				AF30F416212AC74800B0D3B9 /* AccountParamsHelper.swift in Sources */,
 				48F0CED3222EA993002A95FA /* BotTableViewController.swift in Sources */,
 				48E3C90721E38EF700B2E11B /* RatingControl.swift in Sources */,
 				48F0CEDE222EADD4002A95FA /* AddContextTableViewCell.swift in Sources */,
 				AFA566C621F09ECC00037155 /* UnavailableViewController.swift in Sources */,
+				48FF7525223557AF009B367B /* IntroViewController.swift in Sources */,
 				48F0CED1222E8719002A95FA /* AccountHandler.swift in Sources */,
 				AF9862A320CFEA9B00501472 /* AppDelegate.swift in Sources */,
+				48FF752722355AEE009B367B /* SearchTableViewController.swift in Sources */,
 				48E3C90521E38EF700B2E11B /* TextCell.swift in Sources */,
 				4822F80C2226BFCC00479219 /* InputItemModel.swift in Sources */,
 			);

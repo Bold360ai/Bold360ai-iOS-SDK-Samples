@@ -9,9 +9,7 @@
 import UIKit
 import Bold360AI
 
-class BotTableViewController: UITableViewController {
-    var accountHandler: AccountHandler!
-    let spinner = UIActivityIndicatorView()
+class BotTableViewController: AccountTableViewController {
     var chatController: ChatController!
     var chatViewController: UIViewController!
     
@@ -23,32 +21,13 @@ class BotTableViewController: UITableViewController {
     var currentChatState: ChatState = .preparing
     var uploadCompletionHandler : ((FileUploadInfo?) -> Void)!
     let imagePicker = UIImagePickerController()
-    
-    var startChatButton: UIBarButtonItem {
-        get {
-            return UIBarButtonItem(title: "Start Chat", style: .plain, target: self, action: #selector(BotTableViewController.startChat(sender:)))
-        }
-    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.accountHandler = AccountHandler()
-        self.navigationItem.rightBarButtonItem = self.startChatButton
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
 
     // MARK: - Table view data source
 
     
-    @objc func startChat(sender: UIBarButtonItem) {
-        spinner.sizeToFit()
-        spinner.startAnimating()
-        spinner.color = UIColor.lightGray
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
+    @objc override func startChat(sender: UIBarButtonItem) {
+        super.startChat(sender: sender)
         self.chatController = ChatController(account: self.accountHandler.accountParams)
         self.chatController.delegate = self
         NanoRep.shared().chatDelegate = self
@@ -57,103 +36,6 @@ class BotTableViewController: UITableViewController {
         self.chatController.continuityProvider = self
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.accountHandler.items.count
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = self.accountHandler.items[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.type, for: indexPath) as! AccountDataTableViewCell
-
-        cell.data = item
-        cell.delegate = self
-        // Configure the cell...
-
-        return cell
-    }
-    
-
-    
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return self.accountHandler.items[indexPath.row].type == "context"
-    }
-    
-
-    
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            self.accountHandler.deleteContext(index: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .none)
-            self.perform(#selector(BotTableViewController.updateAddContextState(status:)), with: true, afterDelay: 1)
-        }
-    }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @objc func updateAddContextState(status: NSNumber?) {
-        if let stat = status {
-            self.accountHandler.enableAddingContext = stat.boolValue
-        }
-        self.tableView.beginUpdates()
-        self.tableView.reloadRows(at: [IndexPath(row: self.accountHandler.items.count - 1, section: 0)], with: .none)
-        self.tableView.endUpdates()
-    }
-    
-
-}
-
-extension BotTableViewController: AccountDataTableViewCellDelegate {
-    // MARK: AccountDataTableViewCellDelegate
-    func onEvent(event: DataEvent) {
-        switch event {
-        case .addContext:
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
-                self.updateAddContextState(status: nil)
-            }
-            self.tableView.beginUpdates()
-            self.tableView.insertRows(at: [self.accountHandler.addContext()], with: .bottom)
-            self.tableView.endUpdates()
-            CATransaction.commit()
-            break
-        case .contextValid:
-            self.updateAddContextState(status: true)
-            break
-        default:
-            self.updateAddContextState(status: false)
-        }
-        
-    }
 }
 
 
